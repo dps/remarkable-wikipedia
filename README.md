@@ -79,4 +79,4 @@ It looks like the remarkable supports EXT4 for the internal drive:
 # Hardware concept
 
 Here's a thing I think you could build - a sleeve that the reMarkable plugs in to that has a micro USB plug at the end, connects to an SDcard inside the package and also to a solar panel covering the whole back surface.
-![concept](concept.png)
+![concept](sketch.png)
