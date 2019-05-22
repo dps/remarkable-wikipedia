@@ -74,4 +74,4 @@ It looks like the remarkable supports EXT4 for the internal drive:
 ```
 [    7.553171] EXT4-fs (mmcblk1p7): mounted filesystem with ordered data mode. Opts: (null)
 ```
-!(sdcard.jpg)
+![sdcard hookup](sdcard.jpg)
