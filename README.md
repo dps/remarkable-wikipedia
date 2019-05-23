@@ -109,3 +109,6 @@ Usage: kiwix-serve [--index=INDEX_PATH] [--port=PORT] [--verbose] [--nosearchbar
       If you set more than one ZIM_PATH, you cannot set a INDEX_PATH.
 remarkable: ~/ ./kiwix-serve --port=8000 wikipedia_en_simple_all_nopic_2019-05.zim 
 ```
+
+This is simple wikipedia being served from that `kiwix-serve` (served over network to Chrome on Mac, by from the tablet :smile: )
+![wiki](wikipedia.png)
