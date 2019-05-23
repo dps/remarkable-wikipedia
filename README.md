@@ -80,3 +80,32 @@ It looks like the remarkable supports EXT4 for the internal drive:
 
 Here's a thing I think you could build - a sleeve that the reMarkable plugs in to that has a micro USB plug at the end, connects to an SDcard inside the package and also to a solar panel covering the whole back surface.
 ![concept](sketch.png)
+
+# Some more bits of the recipe
+```
+scp zims/wikipedia_en_simple_all_nopic_2019-05.zim root@192.168.42.61:
+```
+
+```
+curl https://mirrors.dotsrc.org/kiwix/release/kiwix-tools/kiwix-tools_linux-armhf-1.2.1.tar.gz > kiwix-tools_linux-armhf-1.2.1.tar.gz
+tar -xzf kiwix-tools_linux-armhf-1.2.1.tar.gz
+scp kiwix-tools_linux-armhf-1.2.1/kiwix-serve root@192.168.42.61:
+```
+
+# Got kiwix-serve running on reMarkable!
+```
+$ ssh root@192.168.42.61
+ｒｅＭａｒｋａｂｌｅ
+╺━┓┏━╸┏━┓┏━┓   ┏━╸┏━┓┏━┓╻ ╻╻╺┳╸┏━┓┏━┓
+┏━┛┣╸ ┣┳┛┃ ┃   ┃╺┓┣┳┛┣━┫┃┏┛┃ ┃ ┣━┫┗━┓
+┗━╸┗━╸╹┗╸┗━┛   ┗━┛╹┗╸╹ ╹┗┛ ╹ ╹ ╹ ╹┗━┛
+remarkable: ~/ ls
+documents                                  log.txt                                    plato-remarkable                           wikipedia_en_simple_all_nopic_2019-05.zim
+kiwix-serve                                memcard                                    srvfb
+remarkable: ~/ ./kiwix-serve 
+Usage: kiwix-serve [--index=INDEX_PATH] [--port=PORT] [--verbose] [--nosearchbar] [--nolibrarybutton] [--nodatealiases] [--daemon] [--attachToProcess=PID] [--interface=IF_NAME] [--urlRootLocation=/URL_ROOT] [--threads=NB_THREAD(1)] ZIM_PATH+
+       kiwix-serve --library [--port=PORT] [--verbose] [--daemon] [--nosearchbar] [--nolibrarybutton] [--nodatealiases] [--attachToProcess=PID] [--interface=IF_NAME] [--urlRootLocation=/URL_ROOT] [--threads=NB_THREAD(1)] LIBRARY_PATH 
+
+      If you set more than one ZIM_PATH, you cannot set a INDEX_PATH.
+remarkable: ~/ ./kiwix-serve --port=8000 wikipedia_en_simple_all_nopic_2019-05.zim 
+```
