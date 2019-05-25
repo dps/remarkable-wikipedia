@@ -113,6 +113,9 @@ remarkable: ~/ ./kiwix-serve --port=8000 wikipedia_en_simple_all_nopic_2019-05.z
 This is simple wikipedia being served from that `kiwix-serve` (served over network to Chrome on Mac, by from the tablet :smile: )
 ![wiki](wikipedia.png)
 
+aaaaand... here is *full* wikipedia:
+This is simple wikipedia being served from that `kiwix-serve` (served over network to Chrome on Mac, by from the tablet :smile: )
+![wiki](fullwikipedia.png)
 
 # Bill of materials
 https://www.amazon.com/SanDisk-128GB-microSDXC-Memory-Adapter/dp/B073JYC4XM/ref=sr_1_4?crid=OLNAM00YTN35&keywords=128gb+micro+sd+card&qid=1558567754&s=gateway&sprefix=128%2Caps%2C187&sr=8-4
