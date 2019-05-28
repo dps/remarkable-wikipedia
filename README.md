@@ -75,3 +75,53 @@ It looks like the remarkable supports EXT4 for the internal drive:
 [    7.553171] EXT4-fs (mmcblk1p7): mounted filesystem with ordered data mode. Opts: (null)
 ```
 ![sdcard hookup](sdcard.jpg)
+
+# Hardware concept
+
+Here's a thing I think you could build - a sleeve that the reMarkable plugs in to that has a micro USB plug at the end, connects to an SDcard inside the package and also to a solar panel covering the whole back surface.
+![concept](sketch.png)
+
+# Some more bits of the recipe
+```
+scp zims/wikipedia_en_simple_all_nopic_2019-05.zim root@192.168.42.61:
+```
+
+```
+curl https://mirrors.dotsrc.org/kiwix/release/kiwix-tools/kiwix-tools_linux-armhf-1.2.1.tar.gz > kiwix-tools_linux-armhf-1.2.1.tar.gz
+tar -xzf kiwix-tools_linux-armhf-1.2.1.tar.gz
+scp kiwix-tools_linux-armhf-1.2.1/kiwix-serve root@192.168.42.61:
+```
+
+# Got kiwix-serve running on reMarkable!
+```
+$ ssh root@192.168.42.61
+ｒｅＭａｒｋａｂｌｅ
+╺━┓┏━╸┏━┓┏━┓   ┏━╸┏━┓┏━┓╻ ╻╻╺┳╸┏━┓┏━┓
+┏━┛┣╸ ┣┳┛┃ ┃   ┃╺┓┣┳┛┣━┫┃┏┛┃ ┃ ┣━┫┗━┓
+┗━╸┗━╸╹┗╸┗━┛   ┗━┛╹┗╸╹ ╹┗┛ ╹ ╹ ╹ ╹┗━┛
+remarkable: ~/ ls
+documents                                  log.txt                                    plato-remarkable                           wikipedia_en_simple_all_nopic_2019-05.zim
+kiwix-serve                                memcard                                    srvfb
+remarkable: ~/ ./kiwix-serve 
+Usage: kiwix-serve [--index=INDEX_PATH] [--port=PORT] [--verbose] [--nosearchbar] [--nolibrarybutton] [--nodatealiases] [--daemon] [--attachToProcess=PID] [--interface=IF_NAME] [--urlRootLocation=/URL_ROOT] [--threads=NB_THREAD(1)] ZIM_PATH+
+       kiwix-serve --library [--port=PORT] [--verbose] [--daemon] [--nosearchbar] [--nolibrarybutton] [--nodatealiases] [--attachToProcess=PID] [--interface=IF_NAME] [--urlRootLocation=/URL_ROOT] [--threads=NB_THREAD(1)] LIBRARY_PATH 
+
+      If you set more than one ZIM_PATH, you cannot set a INDEX_PATH.
+remarkable: ~/ ./kiwix-serve --port=8000 wikipedia_en_simple_all_nopic_2019-05.zim 
+```
+
+This is simple wikipedia being served from that `kiwix-serve` (served over network to Chrome on Mac, by from the tablet :smile: )
+![wiki](wikipedia.png)
+
+aaaaand... here is *full* wikipedia:
+This is simple wikipedia being served from that `kiwix-serve` (served over network to Chrome on Mac, by from the tablet :smile: )
+![wiki](fullwikipedia.png)
+
+# Bill of materials
+https://www.amazon.com/SanDisk-128GB-microSDXC-Memory-Adapter/dp/B073JYC4XM/ref=sr_1_4?crid=OLNAM00YTN35&keywords=128gb+micro+sd+card&qid=1558567754&s=gateway&sprefix=128%2Caps%2C187&sr=8-4
+
+https://www.amazon.com/AuviPal-Micro-USB-Cable-Power/dp/B07FY9Z9GD/ref=sr_1_8?keywords=micro+usb+otg&qid=1558567807&s=gateway&sr=8-8
+
+https://www.amazon.com/Sandisk-Mobile-MicroMate-microSDHC-SDDR-121/dp/B001QLFNCC/ref=sr_1_5?keywords=tiny+sandisk+usb+micro+sd+card+reader&qid=1558567875&s=gateway&sr=8-5
+
+https://www.amazon.com/dp/B06XRQZ76D/ref=twister_B07DK4CJLF?_encoding=UTF8&psc=1
