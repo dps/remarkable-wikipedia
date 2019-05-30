@@ -1,0 +1,5 @@
+name=wikipedia
+desc=The free encyclopedia.
+call=/opt/demo1/bin/qtwikipedia
+term=killall qtwikipedia
+imgFile=wikipedia
