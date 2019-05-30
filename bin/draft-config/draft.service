@@ -1,0 +1,13 @@
+[Unit]
+Description=draft launcher
+#StartLimitIntervalSec=600
+#StartLimitBurst=4
+After=home.mount
+
+[Service]
+ExecStart=/usr/bin/draft
+
+[Install]
+WantedBy=multi-user.target
+
+
