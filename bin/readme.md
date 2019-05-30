@@ -7,4 +7,4 @@
 `kiwix-serve` --> `/home/root/kiwix-serve`<br/>
 `qtwikipedia` --> `/opt/qtwikipedia/bin/qtwikipedia`<br/>
 
-download `https://download.kiwix.org/zim/wikipedia/wikipedia_en_simple_all_nopic_2019-05.zim`   --> `/home/root/wikipedia_en_simple_all_nopic_2019-05.zim`
+download (https://download.kiwix.org/zim/wikipedia/wikipedia_en_simple_all_nopic_2019-05.zim)   --> `/home/root/wikipedia_en_simple_all_nopic_2019-05.zim`
