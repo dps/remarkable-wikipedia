@@ -1,7 +1,7 @@
 # Binaries compiled for reMarkable
 
 `draft` --> `/usr/bin/draft`<br/>
-`draft.service` --> `/lib/systemd/system/draft.service`<br/>
+`draft-config/draft.service` --> `/lib/systemd/system/draft.service`<br/>
 `draft-config/...` --> `/etc/draft/...`<br/>
 `button-capture` --> `/usr/bin/button-capture`<br/>
 `kiwix-serve` --> `/home/root/kiwix-serve`<br/>
