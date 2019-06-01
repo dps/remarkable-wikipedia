@@ -1,0 +1,11 @@
+[Unit]
+Description=kiwix
+#StartLimitIntervalSec=600
+#StartLimitBurst=4
+After=home.mount
+
+[Service]
+ExecStart=/home/root/start-kiwix.sh
+
+[Install]
+WantedBy=multi-user.target
