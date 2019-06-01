@@ -5,7 +5,7 @@
 
 `draft` --> `/usr/bin/draft`<br/>
 `draft-config/draft.service` --> `/lib/systemd/system/draft.service`<br/>
-`draft-config/...` --> `/etc/draft/...`<br/>
+`draft-config/extra-files/...` --> `/etc/draft/...`<br/>
 `button-capture` --> `/usr/bin/button-capture`<br/>
 `kiwix-serve` --> `/home/root/kiwix-serve`<br/>
 `qtwikipedia` --> `/opt/qtwikipedia/bin/qtwikipedia`<br/>
