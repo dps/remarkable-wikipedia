@@ -4,19 +4,9 @@ SSH Access to reMarkable: https://remarkablewiki.com/tech/ssh
 
 List of projects: https://github.com/reHackable/awesome-reMarkable
 
-best repo to build on (I got this working easily)
-https://github.com/merovius/srvfb
-
 new launcher UI:
 https://github.com/dixonary/draft-reMarkable
 
-Plato eReader:
-https://www.reddit.com/r/RemarkableTablet/comments/bkbps9/how_to_install_plato_reader_and_add_it_to_draft/?st=jvp0mqus&sh=0651e353
-
-Source code of the port:
-https://github.com/darvin/plato
-
-Needs QT Creator to build from source. This is probably the best thing to start hacking into a wikipedia reader UI.
 
 # Offline wikipedia notes
 
@@ -39,9 +29,7 @@ wikipedia (English)	en	79G	2018-10	all novid
 Here's how to build a zim file extracting webserver:
 https://github.com/kiwix/kiwix-tools/blob/master/README.md
 
-I think that plus a UI that fetches the content locally and renders in plato is likely the full solution!
-
-The reMarkable only has about 6.5 GB internal storage. I think a USB-otg cable plus sdcard might work.
+The reMarkable only has about 6.5 GB internal storage so we need a USB-otg cable plus USB dongle + sdcard.
 *update*
 confirmed that this should work:
 ```
