@@ -31,6 +31,7 @@ Window {
                 var a = doc.responseText;
                 var reg = "<div class='book__list'><a href='\/([^\/]*)\/'>";
                 edition = a.match(reg)[1];
+                console.log(edition);
                 goHome();
             }
         }
@@ -119,7 +120,7 @@ Window {
             }
             if (doc.readyState == XMLHttpRequest.DONE) {
                 var a = doc.responseText;
-                if (edition == "wikipedia_en_all_nopic_2018-09") {
+                if (edition == "wikipedia") {
                     a = a.substr(a.indexOf("<a id=\"top\"></a>"));
                 } else {
                     a = a.substr(a.indexOf("<div id=\"bodyContent\" class=\"content\">"));
@@ -131,7 +132,7 @@ Window {
             }
         }
         var url = "http://127.0.0.1:8000/" + edition + "/A/" + encodeURIComponent(page);
-        if ((url.indexOf(".html") < 0) && edition == "wikipedia_en_all_nopic_2018-09") {
+        if ((url.indexOf(".html") < 0) && edition == "wikipedia") {
             url += ".html";
         }
 
@@ -147,7 +148,7 @@ Window {
         doc.onreadystatechange = function() {
             if (doc.readyState == XMLHttpRequest.DONE) {
                 var a = doc.responseText;
-                if (edition == "wikipedia_en_all_nopic_2018-09") {
+                if (edition == "wikipedia") {
                     a = a.substr(a.indexOf("<a id=\"top\"></a>"));
                 } else {
                     a = a.substr(a.indexOf("<div id=\"bodyContent\" class=\"content\">"));
@@ -172,7 +173,7 @@ Window {
                 var suggest = "<font size='+2'>";
                 for (var i in results) {
                     var link = results[i].value;
-                    if (edition == "wikipedia_en_all_nopic_2018-09") {
+                    if (edition == "wikipedia") {
                         link = link.replace(/ /g, "_");
                     }
 
