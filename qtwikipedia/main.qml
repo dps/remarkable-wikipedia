@@ -8,7 +8,7 @@ Window {
     height: 1872;
 
     property string edition: "wikipedia_en_simple_all_nopic_2019-05";
-    property string wiki: "";
+    property string homePage: "";
     property string lowerCaseKbd: '<center><font size="+2" face="Noto Emoji"><a href="key-q">q</a> <a href="key-w">w</a> <a href="key-e">e</a> <a href="key-r">r</a> <a href="key-t">t</a> <a href="key-y">y</a> <a href="key-u">u</a> <a href="key-i">i</a> <a href="key-o">o</a> <a href="key-p">p</a> <br/><a href="key-a">a</a> <a href="key-s">s</a> <a href="key-d">d</a> <a href="key-f">f</a> <a href="key-g">g</a> <a href="key-h">h</a> <a href="key-j">j</a> <a href="key-k">k</a> <a href="key-l">l</a> <br/><a href="key-z">z</a> <a href="key-x">x</a> <a href="key-c">c</a> <a href="key-v">v</a> <a href="key-b">b</a> <a href="key-n">n</a> <a href="key-m">m</a> <br/><a href="key-shift">⬆️</a> <a href="key-spc">[=========]</a> <a href="key-del">⬅️</a> </font></center>';
     property string upperCaseKbd: '<center><font size="+2" face="Noto Emoji"><a href="key-Q">Q</a> <a href="key-W">W</a> <a href="key-E">E</a> <a href="key-R">R</a> <a href="key-T">T</a> <a href="key-X">X</a> <a href="key-U">U</a> <a href="key-I">I</a> <a href="key-O">O</a> <a href="key-P">P</a> <br/><a href="key-A">A</a> <a href="key-S">S</a> <a href="key-D">D</a> <a href="key-F">F</a> <a href="key-G">G</a> <a href="key-H">H</a> <a href="key-J">J</a> <a href="key-K">K</a> <a href="key-L">L</a> <br/><a href="key-Z">Z</a> <a href="key-X">X</a> <a href="key-C">C</a> <a href="key-V">V</a> <a href="key-B">B</a> <a href="key-N">N</a> <a href="key-M">M</a> <br/><a href="key-shift">⬆️</a> <a href="key-spc">[=========]</a> <a href="key-del">⬅️</a> </font></center>';
     readonly property int dummy: onLoad();
@@ -29,16 +29,18 @@ Window {
         doc.onreadystatechange = function() {
             if (doc.readyState == XMLHttpRequest.DONE) {
                 var a = doc.responseText;
-                var reg = "<div class='book__list'><a href='\/([^\/]*)\/'>";
+                console.log(a);
+                //var reg = "<div class='book__list'><a href='\/([^\/]*)\/'>";
+                var reg = '<a href="\/([^\/]*)\/A\/([^\/"]*)">Found<\/a>';
                 edition = a.match(reg)[1];
+                homePage = a.match(reg)[2]; // new
                 console.log(edition);
                 goHome();
             }
         }
 
-        doc.open("GET", "http://127.0.0.1:8000/");
+        doc.open("GET", "http://127.0.0.1:8081/");
         doc.send();
-        goHome();
         return 0;
     }
 
@@ -56,14 +58,16 @@ Window {
             }
         }
 
-        doc.open("GET", "file:///home/root/index.txt");
+        //doc.open("GET", "file:///home/root/index.txt");
+        doc.open("GET", "http://127.0.0.1:8081/" + edition + "/A/" + homePage);
+
         doc.send();
     }
 
     function showRequestInfo(text) {
         log.y = 100;
         log.text = text;
-        wiki = text;
+        //wiki = text;
     }
 
     function page() {
@@ -120,7 +124,7 @@ Window {
             }
             if (doc.readyState == XMLHttpRequest.DONE) {
                 var a = doc.responseText;
-                if (edition == "wikipedia") {
+                if (edition == "wikipedia" || edition == "1f98c4ecc0d71bc828dc40533d33c426") {
                     a = a.substr(a.indexOf("<a id=\"top\"></a>"));
                 } else {
                     a = a.substr(a.indexOf("<div id=\"bodyContent\" class=\"content\">"));
@@ -128,10 +132,16 @@ Window {
 
                 //a = a.replace(/<(?!a|\/a|br)(?:.|\n)*?>/gm, '');
                 //a = a.replace(/\n+/g, '\n');
+                console.log(a);
                 showRequestInfo(a);
             }
         }
-        var url = "http://127.0.0.1:8000/" + edition + "/A/" + encodeURIComponent(page);
+        //var url = "http://127.0.0.1:8000/" + edition + "/A/" + encodeURIComponent(page);
+        var url = "http://127.0.0.1:8081/" + edition + "/A/" + encodeURIComponent(page);
+        if (page.indexOf(edition) > 0) {
+            url = "http://127.0.0.1:8081" + page;
+        }
+
         if ((url.indexOf(".html") < 0) && edition == "wikipedia") {
             url += ".html";
         }
@@ -169,23 +179,24 @@ Window {
             if (doc.readyState == XMLHttpRequest.DONE) {
                 var a = doc.responseText;
 
-                var results = eval(a);
-                var suggest = "<font size='+2'>";
-                for (var i in results) {
-                    var link = results[i].value;
-                    if (edition == "wikipedia") {
-                        link = link.replace(/ /g, "_");
-                    }
+//                var results = eval(a);
+//                var suggest = "<font size='+2'>";
+//                for (var i in results) {
+//                    var link = results[i].value;
+//                    if (edition == "wikipedia") {
+//                        link = link.replace(/ /g, "_");
+//                    }
 
-                    suggest += "<a href='" + link + "'>" + results[i].label + "</a><br/>";
-                }
-                suggest += "</font>";
+//                    suggest += "<a href='" + link + "'>" + results[i].label + "</a><br/>";
+//                }
+//                suggest += "</font>";
 
-                showRequestInfo(suggest);
+                showRequestInfo(a);
             }
         }
 
-        doc.open("GET", "http://127.0.0.1:8000/suggest?content=" + edition + "&term=" + query.text);
+        //doc.open("GET", "http://127.0.0.1:8000/suggest?content=" + edition + "&term=" + query.text);
+        doc.open("GET", "http://127.0.0.1:8081/1f98c4ecc0d71bc828dc40533d33c426/A/" + query.text);
         doc.send();
     }
 
@@ -297,7 +308,7 @@ Window {
 
             Text {
                 id: sc;
-                text: "<font size='+1' face='Noto Emoji'>🔀</font>";
+                text: "<font size='+1' face='Noto Emoji'>🏠</font>";
                 textFormat: Text.RichText;
                 anchors {horizontalCenter: parent.horizontalCenter;}
             }
@@ -305,7 +316,7 @@ Window {
                 id: downMouseArea
                 anchors.fill: parent
                 onClicked: {
-                    random();
+                    goHome();
                 }
             }
         }
