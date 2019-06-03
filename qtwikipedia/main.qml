@@ -7,12 +7,15 @@ Window {
     width: 1404;
     height: 1872;
 
+    property string edition: "wikipedia_en_simple_all_nopic_2019-05";
     property string wiki: "";
-    property int dummy: onLoad();
+    property string lowerCaseKbd: '<center><font size="+2" face="Noto Emoji"><a href="key-q">q</a> <a href="key-w">w</a> <a href="key-e">e</a> <a href="key-r">r</a> <a href="key-t">t</a> <a href="key-y">y</a> <a href="key-u">u</a> <a href="key-i">i</a> <a href="key-o">o</a> <a href="key-p">p</a> <br/><a href="key-a">a</a> <a href="key-s">s</a> <a href="key-d">d</a> <a href="key-f">f</a> <a href="key-g">g</a> <a href="key-h">h</a> <a href="key-j">j</a> <a href="key-k">k</a> <a href="key-l">l</a> <br/><a href="key-z">z</a> <a href="key-x">x</a> <a href="key-c">c</a> <a href="key-v">v</a> <a href="key-b">b</a> <a href="key-n">n</a> <a href="key-m">m</a> <br/><a href="key-shift">⬆️</a> <a href="key-spc">[=========]</a> <a href="key-del">⬅️</a> </font></center>';
+    property string upperCaseKbd: '<center><font size="+2" face="Noto Emoji"><a href="key-Q">Q</a> <a href="key-W">W</a> <a href="key-E">E</a> <a href="key-R">R</a> <a href="key-T">T</a> <a href="key-X">X</a> <a href="key-U">U</a> <a href="key-I">I</a> <a href="key-O">O</a> <a href="key-P">P</a> <br/><a href="key-A">A</a> <a href="key-S">S</a> <a href="key-D">D</a> <a href="key-F">F</a> <a href="key-G">G</a> <a href="key-H">H</a> <a href="key-J">J</a> <a href="key-K">K</a> <a href="key-L">L</a> <br/><a href="key-Z">Z</a> <a href="key-X">X</a> <a href="key-C">C</a> <a href="key-V">V</a> <a href="key-B">B</a> <a href="key-N">N</a> <a href="key-M">M</a> <br/><a href="key-shift">⬆️</a> <a href="key-spc">[=========]</a> <a href="key-del">⬅️</a> </font></center>';
+    readonly property int dummy: onLoad();
 
     function handleKey(event) {
         if (event.key == 16777234) {
-            // Left key, no action right now.
+            back();
         } else if (event.key == 16777232) {
             goHome();
         } else if (event.key == 16777236) {
@@ -21,8 +24,39 @@ Window {
     }
 
     function onLoad() {
+        console.log("onLoad");
+        var doc = new XMLHttpRequest();
+        doc.onreadystatechange = function() {
+            if (doc.readyState == XMLHttpRequest.DONE) {
+                var a = doc.responseText;
+                var reg = "<div class='book__list'><a href='\/([^\/]*)\/'>";
+                edition = a.match(reg)[1];
+                goHome();
+            }
+        }
+
+        doc.open("GET", "http://127.0.0.1:8000/");
+        doc.send();
         goHome();
         return 0;
+    }
+
+    function loadIndexFile() {
+        console.log("loadIndexFile");
+        log.y = 100;
+        log.text = "Fetching..."
+
+        var doc = new XMLHttpRequest();
+        doc.onreadystatechange = function() {
+            if (doc.readyState == XMLHttpRequest.DONE) {
+                var a = doc.responseText;
+                showRequestInfo(a);
+                log.forceActiveFocus();
+            }
+        }
+
+        doc.open("GET", "file:///home/root/index.txt");
+        doc.send();
     }
 
     function showRequestInfo(text) {
@@ -32,17 +66,19 @@ Window {
     }
 
     function page() {
-        log.text = ""
-        log.y = log.y - 800;
-        log.text = wiki;
+        log.y = log.y - 1700;
+    }
+    function back() {
+        log.y = log.y + 1700;
     }
 
     function goHome() {
-        navigateTo("Main_Page");
-        log.forceActiveFocus();
+        query.text = "Home";
+        loadIndexFile();
     }
 
     function navigateTo(link) {
+        console.log(link)
         query.text = link;
         retrieve(link);
         log.forceActiveFocus();
@@ -50,29 +86,57 @@ Window {
 
     function vkbd(link) {
         var c = link.substring(link.length - 1);
-        if (link == "key-spc") {
+        if (link === "key-spc") {
             c = " ";
-        } else if (link == "key-del") {
-            query.text = "";
-            return;
+        } else if (link === "key-del") {
+            query.text = query.text.substring(0, query.text.length - 1);
+            c = '';
+        } else if (link === "key-shift") {
+            if (kbdKeys.text === lowerCaseKbd) {
+                kbdKeys.text = upperCaseKbd;
+            } else {
+                kbdKeys.text = lowerCaseKbd;
+            }
+
+            c = '';
         }
         query.text += c;
-        refreshSuggest();
+        if (link !== "key-shift") {
+          refreshSuggest();
+        }
     }
 
     function retrieve(page) {
         log.y = 100;
         log.text = "Fetching..."
+        console.log("\n")
+
         var doc = new XMLHttpRequest();
         doc.onreadystatechange = function() {
+            console.log("rs: " + doc.readyState);
+            if (doc.readyState != 1) {
+              console.log("stat: " + doc.status + " " + doc.statusText);
+            }
             if (doc.readyState == XMLHttpRequest.DONE) {
                 var a = doc.responseText;
-                a = a.substr(a.indexOf("<div id=\"bodyContent\" class=\"content\">"));
+                if (edition == "wikipedia_en_all_nopic_2018-09") {
+                    a = a.substr(a.indexOf("<a id=\"top\"></a>"));
+                } else {
+                    a = a.substr(a.indexOf("<div id=\"bodyContent\" class=\"content\">"));
+                }
+
+                //a = a.replace(/<(?!a|\/a|br)(?:.|\n)*?>/gm, '');
+                //a = a.replace(/\n+/g, '\n');
                 showRequestInfo(a);
             }
         }
+        var url = "http://127.0.0.1:8000/" + edition + "/A/" + encodeURIComponent(page);
+        if ((url.indexOf(".html") < 0) && edition == "wikipedia_en_all_nopic_2018-09") {
+            url += ".html";
+        }
 
-        doc.open("GET", "http://127.0.0.1:8000/wikipedia_en_simple_all_nopic_2019-05/A/" + encodeURIComponent(page));
+        console.log(url);
+        doc.open("GET", url);
         doc.send();
     }
 
@@ -83,14 +147,18 @@ Window {
         doc.onreadystatechange = function() {
             if (doc.readyState == XMLHttpRequest.DONE) {
                 var a = doc.responseText;
-                a = a.substr(a.indexOf("<div id=\"bodyContent\" class=\"content\">"));
+                if (edition == "wikipedia_en_all_nopic_2018-09") {
+                    a = a.substr(a.indexOf("<a id=\"top\"></a>"));
+                } else {
+                    a = a.substr(a.indexOf("<div id=\"bodyContent\" class=\"content\">"));
+                }
                 showRequestInfo(a);
                 log.forceActiveFocus();
                 query.text = doc.responseText.match("<title>([^<]*)</title>")[1];
             }
         }
 
-        doc.open("GET", "http://127.0.0.1:8000/random?content=wikipedia_en_simple_all_nopic_2019-05");
+        doc.open("GET", "http://127.0.0.1:8000/random?content=" + edition);
         doc.send();
     }
 
@@ -99,19 +167,24 @@ Window {
         doc.onreadystatechange = function() {
             if (doc.readyState == XMLHttpRequest.DONE) {
                 var a = doc.responseText;
+
                 var results = eval(a);
                 var suggest = "<font size='+2'>";
                 for (var i in results) {
-                    suggest += "<a href='" + results[i].value + "'>" + results[i].label + "</a><br/>";
+                    var link = results[i].value;
+                    if (edition == "wikipedia_en_all_nopic_2018-09") {
+                        link = link.replace(/ /g, "_");
+                    }
+
+                    suggest += "<a href='" + link + "'>" + results[i].label + "</a><br/>";
                 }
                 suggest += "</font>";
 
                 showRequestInfo(suggest);
-                // Note, focus is not moved out of input box.
             }
         }
 
-        doc.open("GET", "http://127.0.0.1:8000/suggest?content=wikipedia_en_simple_all_nopic_2019-05&term=" + query.text);
+        doc.open("GET", "http://127.0.0.1:8000/suggest?content=" + edition + "&term=" + query.text);
         doc.send();
     }
 
@@ -121,7 +194,6 @@ Window {
 
         Text {
             id: log;
-            height: 1772;
             y: 100;
             anchors { left: parent.left; right: parent.right; }
             anchors.margins: 50;
@@ -129,13 +201,19 @@ Window {
             textFormat: Text.RichText;
             wrapMode: Text.Wrap;
             onLinkActivated: navigateTo(link);
+            focus: true;
             Keys.enabled: true;
 
             Keys.onReleased: {
                 handleKey(event);
             }
 
+            onContentSizeChanged: {
+                console.log()
+            }
+
         }
+
     }
 
     Rectangle {
@@ -169,6 +247,7 @@ Window {
                 }
 
                 onFocusChanged: {
+                    console.log(focus);
                     if (focus) {
                         query.text = "";
                         kbd.visible = true;
@@ -229,6 +308,7 @@ Window {
                 }
             }
         }
+
     }
 
     Rectangle {
@@ -237,17 +317,15 @@ Window {
         anchors.left: parent.left;
         anchors.bottom: parent.bottom;
         anchors.right: parent.right;
-        height: 300;
+        height: 320;
         color: "white"
 
-
-
         Text {
+            id: kbdKeys
             anchors.centerIn: parent
-            text: '<center><font size="+3" face="Monospace"><a href="key-q">q</a> <a href="key-w">w</a> <a href="key-e">e</a> <a href="key-r">r</a> <a href="key-t">t</a> <a href="key-y">y</a> <a href="key-u">u</a> <a href="key-i">i</a> <a href="key-o">o</a> <a href="key-p">p</a> <br/><a href="key-a">a</a> <a href="key-s">s</a> <a href="key-d">d</a> <a href="key-f">f</a> <a href="key-g">g</a> <a href="key-h">h</a> <a href="key-j">j</a> <a href="key-k">k</a> <a href="key-l">l</a> <br/><a href="key-z">z</a> <a href="key-x">x</a> <a href="key-c">c</a> <a href="key-v">v</a> <a href="key-b">b</a> <a href="key-n">n</a> <a href="key-m">m</a> <a href="key-spc">spc</a> <a href="key-del">del</a> </font></center>'
+            text: lowerCaseKbd;
             textFormat: Text.RichText;
             onLinkActivated: vkbd(link);
-
         }
     }
 }
