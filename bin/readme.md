@@ -7,8 +7,8 @@
 `draft-config/draft.service` --> `/lib/systemd/system/draft.service`<br/>
 `draft-config/extra-files/...` --> `/etc/draft/...`<br/>
 `button-capture` --> `/usr/bin/button-capture`<br/>
-`kiwix-serve` --> `/home/root/kiwix-serve`<br/>
-`qtwikipedia` --> `/opt/qtwikipedia/bin/qtwikipedia`<br/>
+`zimserver` --> `/usr/bin/zimserver`<br/>
+`qtwikipedia` --> `/usr/bin/qtwikipedia`<br/>
 
 download (https://download.kiwix.org/zim/wikipedia/wikipedia_en_simple_all_nopic_2019-05.zim)   --> `/home/root/wikipedia_en_simple_all_nopic_2019-05.zim`
 

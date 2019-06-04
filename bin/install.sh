@@ -31,12 +31,11 @@ scp draft root@$IP:/usr/bin/draft
 scp draft-config/draft.service root@$IP:/lib/systemd/system/draft.service
 ssh root@$IP "mkdir -p /etc/draft"
 scp -r draft-config/extra-files/* root@$IP:/etc/draft
-ssh root@$IP "mkdir -p /opt/qtwikipedia/bin"
-scp qtwikipedia root@$IP:/opt/qtwikipedia/bin/qtwikipedia
+scp qtwikipedia root@$IP:/usr/bin/qtwikipedia
 scp button-capture root@$IP:/usr/bin/button-capture
 
-echo Copying kiwix-serve
-scp kiwix-serve root@$IP:/usr/bin/kiwix-serve
+echo Copying zimserver (we now use zimserver instead of kiwix-serve)
+scp zimserver root@$IP:/usr/bin/zimserver
 scp start-kiwix.sh root@10.11.99.1:/home/root/start-kiwix.sh
 scp kiwix.service /lib/systemd/system/kiwix.service
 
