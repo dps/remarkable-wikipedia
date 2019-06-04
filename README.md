@@ -4,8 +4,7 @@ When I was a kid, the ([apocryphal!](https://en.wikipedia.org/wiki/Library_of_Al
 
 After years of kicking this idea around in my head, a chat with friends who apparently wanted it too and a snowy weekend in May provided the catalyst to actually make it happen!
 
-<center><blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Over the long weekend, I built a thing I have wished existed for years - this is *all* of Wikipedia, available offline on my <a href="https://twitter.com/remarkablepaper?ref_src=twsrc%5Etfw">@remarkablepaper</a> tablet. <a href="https://t.co/mWewIzfOFx">pic.twitter.com/mWewIzfOFx</a></p>&mdash; David Singleton (@dps) <a href="https://twitter.com/dps/status/1133608364913582080?ref_src=twsrc%5Etfw">May 29, 2019</a></blockquote>
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></center>
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Over the long weekend, I built a thing I have wished existed for years - this is *all* of Wikipedia, available offline on my <a href="https://twitter.com/remarkablepaper?ref_src=twsrc%5Etfw">@remarkablepaper</a> tablet. <a href="https://t.co/mWewIzfOFx">pic.twitter.com/mWewIzfOFx</a></p>&mdash; David Singleton (@dps) <a href="https://twitter.com/dps/status/1133608364913582080?ref_src=twsrc%5Etfw">May 29, 2019</a></blockquote>
 
 This was a fun thing to build and is an even more fun thing to use, and judging by the response on Twitter, it's something other people would like too, so here are the instructions on how to build your very own hitchhiker's guide to the galaxy.
 
