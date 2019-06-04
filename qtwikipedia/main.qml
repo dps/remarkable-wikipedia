@@ -24,17 +24,13 @@ Window {
     }
 
     function onLoad() {
-        console.log("onLoad");
         var doc = new XMLHttpRequest();
         doc.onreadystatechange = function() {
             if (doc.readyState == XMLHttpRequest.DONE) {
                 var a = doc.responseText;
-                console.log(a);
-                //var reg = "<div class='book__list'><a href='\/([^\/]*)\/'>";
                 var reg = '<a href="\/([^\/]*)\/A\/([^\/"]*)">Found<\/a>';
                 edition = a.match(reg)[1];
-                homePage = a.match(reg)[2]; // new
-                console.log(edition);
+                homePage = a.match(reg)[2];
                 goHome();
             }
         }
@@ -45,7 +41,6 @@ Window {
     }
 
     function loadIndexFile() {
-        console.log("loadIndexFile");
         log.y = 100;
         log.text = "Fetching..."
 
@@ -57,8 +52,6 @@ Window {
                 log.forceActiveFocus();
             }
         }
-
-        //doc.open("GET", "file:///home/root/index.txt");
         doc.open("GET", "http://127.0.0.1:8081/" + edition + "/A/" + homePage);
 
         doc.send();
@@ -67,7 +60,6 @@ Window {
     function showRequestInfo(text) {
         log.y = 100;
         log.text = text;
-        //wiki = text;
     }
 
     function page() {
@@ -83,10 +75,17 @@ Window {
     }
 
     function navigateTo(link) {
-        console.log(link)
         query.text = link;
         retrieve(link);
         log.forceActiveFocus();
+    }
+
+    function toggleShiftState() {
+        if (kbdKeys.text === lowerCaseKbd) {
+            kbdKeys.text = upperCaseKbd;
+        } else {
+            kbdKeys.text = lowerCaseKbd;
+        }
     }
 
     function vkbd(link) {
@@ -97,31 +96,24 @@ Window {
             query.text = query.text.substring(0, query.text.length - 1);
             c = '';
         } else if (link === "key-shift") {
-            if (kbdKeys.text === lowerCaseKbd) {
-                kbdKeys.text = upperCaseKbd;
-            } else {
-                kbdKeys.text = lowerCaseKbd;
-            }
-
+            toggleShiftState();
             c = '';
         }
         query.text += c;
         if (link !== "key-shift") {
-          refreshSuggest();
+            refreshSuggest();
+            if (query.text.length == 1) {
+                toggleShiftState();
+            }
         }
     }
 
     function retrieve(page) {
         log.y = 100;
         log.text = "Fetching..."
-        console.log("\n")
 
         var doc = new XMLHttpRequest();
         doc.onreadystatechange = function() {
-            console.log("rs: " + doc.readyState);
-            if (doc.readyState != 1) {
-              console.log("stat: " + doc.status + " " + doc.statusText);
-            }
             if (doc.readyState == XMLHttpRequest.DONE) {
                 var a = doc.responseText;
                 if (edition == "wikipedia" || edition == "1f98c4ecc0d71bc828dc40533d33c426") {
@@ -129,14 +121,9 @@ Window {
                 } else {
                     a = a.substr(a.indexOf("<div id=\"bodyContent\" class=\"content\">"));
                 }
-
-                //a = a.replace(/<(?!a|\/a|br)(?:.|\n)*?>/gm, '');
-                //a = a.replace(/\n+/g, '\n');
-                console.log(a);
                 showRequestInfo(a);
             }
         }
-        //var url = "http://127.0.0.1:8000/" + edition + "/A/" + encodeURIComponent(page);
         var url = "http://127.0.0.1:8081/" + edition + "/A/" + encodeURIComponent(page);
         if (page.indexOf(edition) > 0) {
             url = "http://127.0.0.1:8081" + page;
@@ -146,30 +133,7 @@ Window {
             url += ".html";
         }
 
-        console.log(url);
         doc.open("GET", url);
-        doc.send();
-    }
-
-    function random() {
-        log.y = 100;
-        query.text = "random...";
-        var doc = new XMLHttpRequest();
-        doc.onreadystatechange = function() {
-            if (doc.readyState == XMLHttpRequest.DONE) {
-                var a = doc.responseText;
-                if (edition == "wikipedia") {
-                    a = a.substr(a.indexOf("<a id=\"top\"></a>"));
-                } else {
-                    a = a.substr(a.indexOf("<div id=\"bodyContent\" class=\"content\">"));
-                }
-                showRequestInfo(a);
-                log.forceActiveFocus();
-                query.text = doc.responseText.match("<title>([^<]*)</title>")[1];
-            }
-        }
-
-        doc.open("GET", "http://127.0.0.1:8000/random?content=" + edition);
         doc.send();
     }
 
@@ -178,25 +142,11 @@ Window {
         doc.onreadystatechange = function() {
             if (doc.readyState == XMLHttpRequest.DONE) {
                 var a = doc.responseText;
-
-//                var results = eval(a);
-//                var suggest = "<font size='+2'>";
-//                for (var i in results) {
-//                    var link = results[i].value;
-//                    if (edition == "wikipedia") {
-//                        link = link.replace(/ /g, "_");
-//                    }
-
-//                    suggest += "<a href='" + link + "'>" + results[i].label + "</a><br/>";
-//                }
-//                suggest += "</font>";
-
                 showRequestInfo(a);
             }
         }
 
-        //doc.open("GET", "http://127.0.0.1:8000/suggest?content=" + edition + "&term=" + query.text);
-        doc.open("GET", "http://127.0.0.1:8081/1f98c4ecc0d71bc828dc40533d33c426/A/" + query.text);
+        doc.open("GET", "http://127.0.0.1:8081/" + edition + "/A/" + query.text);
         doc.send();
     }
 
@@ -219,11 +169,6 @@ Window {
             Keys.onReleased: {
                 handleKey(event);
             }
-
-            onContentSizeChanged: {
-                console.log()
-            }
-
         }
 
     }
@@ -259,16 +204,16 @@ Window {
                 }
 
                 onFocusChanged: {
-                    console.log(focus);
                     if (focus) {
                         query.text = "";
+                        kbdKeys.text = upperCaseKbd;
                         kbd.visible = true;
                     } else {
                         kbd.visible = false;
                     }
                 }
 
-            }            
+            }
 
         }
         Rectangle {
