@@ -33,7 +33,7 @@ It is possible to build all the stuff I'm about to recommend from source code, a
 * run the install script `./install.sh`
 
 When the install script is done, your tablet will reboot to the _draft_ launcher homescreen, which will look something like this:
-![draft launcher screenshot](screenshots/draft_launcher.png | width=100)
+![draft launcher screenshot](screenshots/draft_launcher.png|width=100)
 You can enter the standard reMarkable UI by tapping `xochitl`.
 
 Tapping *wikipedia* will start `qtremarkable` and render the wikipedia main page. Assuming the external memory card was attached when the tablet booted, you'll see the main page of full wikipedia. Otherwise, if you put simple english wikipedia on the internal memory, you'll see that version instead.
