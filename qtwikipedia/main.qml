@@ -202,16 +202,42 @@ Window {
         color: "white"
 
         Rectangle {
+                    id: backbox;
+                    width: 100
+                    height: 80
+                    color: "white"
+                    border.color: "black"
+                    border.width: 3
+                    radius: 10;
+                    x: 10;
+                    y: 5;
+
+                    Text {
+                        id: go;
+                        text: "<font size='+1' face='Noto Emoji'>⬅️</font>";
+                        textFormat: Text.RichText;
+                        anchors {horizontalCenter: parent.horizontalCenter;}
+                    }
+                    MouseArea {
+                        id: mouseArea
+                        anchors.fill: parent
+                        onClicked: {
+                            if (backStack.length > 1) {
+                              navigateBack();
+                            }
+                        }
+                    }
+                }
+        Rectangle {
             id: qbox;
             width: 1190;
             height: 80;
-            x: 10;
             y: 5;
+            anchors.left: backbox.right;
             color: "white";
             border.color: "black";
             border.width: 3;
             radius: 10;
-            anchors {margins: 10;}
 
             TextInput {
                 id: query; anchors.top: parent.top;
@@ -237,33 +263,7 @@ Window {
             }
 
         }
-        Rectangle {
-            id: gobox;
-            width: 100
-            height: 80
-            color: "white"
-            border.color: "black"
-            border.width: 3
-            radius: 10;
-            y: 5;
-            anchors.left: qbox.right;
 
-            Text {
-                id: go;
-                text: "<font size='+1' face='Noto Emoji'>⬅️</font>";
-                textFormat: Text.RichText;
-                anchors {horizontalCenter: parent.horizontalCenter;}
-            }
-            MouseArea {
-                id: mouseArea
-                anchors.fill: parent
-                onClicked: {
-                    if (backStack.length > 1) {
-                      navigateBack();
-                    }
-                }
-            }
-        }
         Rectangle {
             id: downbox;
             width: 100
@@ -272,7 +272,7 @@ Window {
             border.color: "black"
             border.width: 3
             radius: 10
-            y: 5; anchors.left: gobox.right;
+            y: 5; anchors.left: qbox.right;
 
             Text {
                 id: sc;
