@@ -15,11 +15,11 @@ Window {
     property var backStack: [];
 
     function handleKey(event) {
-        if (event.key == 16777234) {
+        if (event.key === 16777234) {
             back();
-        } else if (event.key == 16777232) {
+        } else if (event.key === 16777232) {
             goHome();
-        } else if (event.key == 16777236) {
+        } else if (event.key === 16777236) {
             page();
         }
     }
@@ -93,8 +93,13 @@ Window {
             goHome();
             return;
         }
+        var friendlyLink = link;
+        var m = link.match('\/([^\/]*)\/A\/([^\/"]*)');
+        if (m != null) {
+            friendlyLink = m[2];
+        }
 
-        query.text = link;
+        query.text = friendlyLink;
         backStack.push(link);
         retrieve(link);
         log.forceActiveFocus();
