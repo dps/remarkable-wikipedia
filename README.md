@@ -33,7 +33,7 @@ It is possible to build all the stuff I'm about to recommend from source code, a
 * run the install script `./install.sh`
 
 When the install script is done, your tablet will reboot to the _draft_ launcher homescreen, which will look something like this:
-![draft launcher screenshot](screenshots/draft_launcher.png | width=100 )
+![draft launcher screenshot](screenshots/draft_launcher.png | width=100)
 You can enter the standard reMarkable UI by tapping `xochitl`.
 
 Tapping *wikipedia* will start `qtremarkable` and render the wikipedia main page. Assuming the external memory card was attached when the tablet booted, you'll see the main page of full wikipedia. Otherwise, if you put simple english wikipedia on the internal memory, you'll see that version instead.
@@ -41,10 +41,10 @@ Tapping *wikipedia* will start `qtremarkable` and render the wikipedia main page
 You can *quit* `qtremarkable` (or any other app launched by draft) by holding the middle hardware button for more than one second and releasing it. But you don't want to do that - there's so much wikipedia to read!
 
 Tapping in the address bar at the top of the screen will bring up a keyboard so you can start looking for a specific wikipedia page. These suggestions are *case-sensitive*.
-![suggest screenshot](screenshots/suggest.png | width=100 )
+![suggest screenshot](screenshots/suggest.png | width=100)
 
 Once you have found the page you're looking for, the right and left hardware keys scroll a full page down or up the article respectively. Tapping on links moves through articles as you'd expect and the *back* and *home* buttons at the top do what you'd expect.
 
 Enjoy reading and learning!
-![suggest screenshot](screenshots/article.png | width=100 )
+![suggest screenshot](screenshots/article.png | width=100)
 
