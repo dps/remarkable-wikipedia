@@ -7,7 +7,7 @@ Window {
     width: 1404;
     height: 1872;
 
-    property string edition: "wikipedia_en_simple_all_nopic_2019-05";
+    property string edition: "wikipedia_en_simple_all_novid_2019-05";
     property string homePage: "";
     readonly property string lowerCaseKbd: '<center><font size="+2" face="Noto Emoji"><a href="key-q">q</a> <a href="key-w">w</a> <a href="key-e">e</a> <a href="key-r">r</a> <a href="key-t">t</a> <a href="key-y">y</a> <a href="key-u">u</a> <a href="key-i">i</a> <a href="key-o">o</a> <a href="key-p">p</a> <br/><a href="key-a">a</a> <a href="key-s">s</a> <a href="key-d">d</a> <a href="key-f">f</a> <a href="key-g">g</a> <a href="key-h">h</a> <a href="key-j">j</a> <a href="key-k">k</a> <a href="key-l">l</a> <br/><a href="key-z">z</a> <a href="key-x">x</a> <a href="key-c">c</a> <a href="key-v">v</a> <a href="key-b">b</a> <a href="key-n">n</a> <a href="key-m">m</a> <br/><a href="key-shift">⬆️</a> <a href="key-spc">[=========]</a> <a href="key-del">⬅️</a> </font></center>';
     readonly property string upperCaseKbd: '<center><font size="+2" face="Noto Emoji"><a href="key-Q">Q</a> <a href="key-W">W</a> <a href="key-E">E</a> <a href="key-R">R</a> <a href="key-T">T</a> <a href="key-X">X</a> <a href="key-U">U</a> <a href="key-I">I</a> <a href="key-O">O</a> <a href="key-P">P</a> <br/><a href="key-A">A</a> <a href="key-S">S</a> <a href="key-D">D</a> <a href="key-F">F</a> <a href="key-G">G</a> <a href="key-H">H</a> <a href="key-J">J</a> <a href="key-K">K</a> <a href="key-L">L</a> <br/><a href="key-Z">Z</a> <a href="key-X">X</a> <a href="key-C">C</a> <a href="key-V">V</a> <a href="key-B">B</a> <a href="key-N">N</a> <a href="key-M">M</a> <br/><a href="key-shift">⬆️</a> <a href="key-spc">[=========]</a> <a href="key-del">⬅️</a> </font></center>';

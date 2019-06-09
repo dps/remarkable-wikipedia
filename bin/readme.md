@@ -10,7 +10,7 @@
 `zimserver` --> `/usr/bin/zimserver`<br/>
 `qtwikipedia` --> `/usr/bin/qtwikipedia`<br/>
 
-download (https://download.kiwix.org/zim/wikipedia/wikipedia_en_simple_all_nopic_2019-05.zim)   --> `/home/root/wikipedia_en_simple_all_nopic_2019-05.zim`
+download (https://download.kiwix.org/zim/wikipedia/wikipedia_en_simple_all_novid_2019-05.zim)   --> `/home/root/wikipedia_en_simple_all_novid_2019-05.zim`
 
 # Instructions
 
