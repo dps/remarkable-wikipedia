@@ -31,6 +31,8 @@ scp draft root@$IP:/usr/bin/draft
 scp draft-config/draft.service root@$IP:/lib/systemd/system/draft.service
 # files needed by draft
 scp -r draft-share/draft root@$IP:/usr/share/
+# files needed by fingerterm
+scp -r fingerterm-share/fingerterm root@$IP:/usr/share/
 ssh root@$IP "mkdir -p /etc/draft"
 scp -r draft-config/extra-files/* root@$IP:/etc/draft
 scp qtwikipedia root@$IP:/usr/bin/qtwikipedia
@@ -44,6 +46,7 @@ scp kiwix.service /lib/systemd/system/kiwix.service
 
 echo Make the files executable
 ssh root@$IP "chmod +x /usr/bin/draft"
+ssh root@$IP "chmod +x /usr/bin/fingerterm"
 ssh root@$IP "chmod +x /usr/bin/button-capture"
 ssh root@$IP "chmod +x /usr/bin/qtwikipedia"
 
