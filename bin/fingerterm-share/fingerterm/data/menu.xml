@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<userMenu>
+    <item>
+        <title>ssh screen example</title>
+        <command>ssh -t user@example.com screen -UDr\r</command>
+        <!-- The disableOn element is optional and can be used to
+             disable the button when using certain programs. The
+             button is disabled when the window title contains the
+             specified string. Note that for this to work your shell
+             and/or application must set the window title correctly. -->
+        <disableOn>irssi</disableOn>
+    </item>
+    <item>
+        <title>ssh example</title>
+        <command>ssh user@example.com\r</command>
+    </item>
+    <item>
+        <title>screen -Dr</title>
+        <command>screen -Dr\r</command>
+    </item>
+    <item>
+        <title>Ctrl-A-D</title>
+        <command>\x01\x04</command>
+    </item>
+    <item>
+        <title>Ctrl-C</title>
+        <command>\x03</command>
+    </item>
+</userMenu>
