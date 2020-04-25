@@ -1,5 +1,8 @@
-(Note - You modify the internal system of your reMarkable at your own risk! This might brick your tablet.)
+# Note - You modify the internal system of your reMarkable at your own risk! This might brick your tablet.
+# I accept no responsibility if it does.
 
+The prebuilt binaries have been updated to use the new version of the reMarkable toolchain: `https://remarkable.engineering/oecore-x86_64-cortexa9hf-neon-toolchain-zero-gravitas-1.8-23.9.2019.sh`
+This is current as of April 25th 2020.
 
 # Binaries compiled for reMarkable
 
