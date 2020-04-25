@@ -9,13 +9,13 @@ fi
 echo $REMARKABLE_SW_VERSION
 
 
-if [ -f wikipedia_en_simple_all_nopic_2019-05.zim ]; then
+if [ -f wikipedia_en_simple_all_nopic_2020-04.zim ]; then
   echo Found simple wikipedia file.
 else
     read -r -p "Do you want to download Simple wikipedia? [y/N] " response
     case "$response" in
         [yY][eE][sS]|[yY]) 
-            curl -L -o wikipedia_en_simple_all_nopic_2019-05.zim http://download.kiwix.org/zim/wikipedia/wikipedia_en_simple_all_nopic_2019-05.zim
+            curl -L -o wikipedia_en_simple_all_nopic_2020-04.zim http://download.kiwix.org/zim/wikipedia/wikipedia_en_simple_all_nopic_2020-04.zim
             ;;
         *)
             echo Skipping simple wikipedia download.
@@ -51,9 +51,9 @@ ssh root@$IP "chmod +x /usr/bin/button-capture"
 ssh root@$IP "chmod +x /usr/bin/qtwikipedia"
 
 
-if [ -f wikipedia_en_simple_all_nopic_2019-05.zim ]; then
+if [ -f wikipedia_en_simple_all_nopic_2020-04.zim ]; then
     echo Copying simple wikipedia
-    scp wikipedia_en_simple_all_nopic_2019-05.zim root@$IP:/home/root/wikipedia_en_simple_all_nopic_2019-05.zim
+    scp wikipedia_en_simple_all_nopic_2020-04.zim root@$IP:/home/root/wikipedia_en_simple_all_nopic_2020-04.zim
 fi
 
 echo Enabling draft launcher and kiwix.
