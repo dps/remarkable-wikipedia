@@ -38,6 +38,8 @@ scp -r draft-config/extra-files/* root@$IP:/etc/draft
 scp qtwikipedia root@$IP:/usr/bin/qtwikipedia
 scp button-capture root@$IP:/usr/bin/button-capture
 scp fingerterm root@$IP:/usr/bin/fingerterm
+scp keywriter root@$IP:/usr/bin/keywriter
+
 
 echo Copying zimserver #(we now use zimserver instead of kiwix-serve)
 scp zimserver root@$IP:/usr/bin/zimserver
@@ -49,7 +51,7 @@ ssh root@$IP "chmod +x /usr/bin/draft"
 ssh root@$IP "chmod +x /usr/bin/fingerterm"
 ssh root@$IP "chmod +x /usr/bin/button-capture"
 ssh root@$IP "chmod +x /usr/bin/qtwikipedia"
-
+ssh root@$IP "chmod +x /usr/bin/keywriter"
 
 if [ -f wikipedia_en_simple_all_nopic_2020-04.zim ]; then
     echo Copying simple wikipedia

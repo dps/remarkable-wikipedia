@@ -1,5 +1,5 @@
 name=fingerterm
 desc=Touchscreen accessible terminal.
 call=/usr/bin/fingerterm
-term=:
+term=killall fingerterm
 imgFile=fingerterm
