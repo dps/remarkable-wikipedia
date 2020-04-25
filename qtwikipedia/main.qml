@@ -145,7 +145,7 @@ Window {
                 if (edition == "wikipedia" || edition == "1f98c4ecc0d71bc828dc40533d33c426") {
                     a = a.substr(a.indexOf("<a id=\"top\"></a>"));
                 } else {
-                    a = a.substr(a.indexOf("<div id=\"bodyContent\" class=\"content\">"));
+                    a = a.substr(a.indexOf("<div id=\"bodyContent\""));
                 }
                 showRequestInfo(a);
             }
