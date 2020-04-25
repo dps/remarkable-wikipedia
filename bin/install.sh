@@ -37,6 +37,7 @@ ssh root@$IP "mkdir -p /etc/draft"
 scp -r draft-config/extra-files/* root@$IP:/etc/draft
 scp qtwikipedia root@$IP:/usr/bin/qtwikipedia
 scp button-capture root@$IP:/usr/bin/button-capture
+scp fingerterm root@$IP:/usr/bin/fingerterm
 
 echo Copying zimserver #(we now use zimserver instead of kiwix-serve)
 scp zimserver root@$IP:/usr/bin/zimserver
@@ -53,7 +54,7 @@ ssh root@$IP "chmod +x /usr/bin/qtwikipedia"
 if [ -f wikipedia_en_simple_all_nopic_2019-05.zim ]; then
     echo Copying simple wikipedia
     scp wikipedia_en_simple_all_nopic_2019-05.zim root@$IP:/home/root/wikipedia_en_simple_all_nopic_2019-05.zim
-else
+fi
 
 echo Enabling draft launcher and kiwix.
 ssh root@$IP "systemctl disable xochitl"
