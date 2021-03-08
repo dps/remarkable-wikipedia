@@ -66,7 +66,8 @@ Window {
 
     function showRequestInfo(text) {
         log.y = 100;
-        text = text.replaceAll("<a ", "<a style='color: black' ");
+        const regex = /<a /g;
+        text = text.replace(regex, "<a style='color: black' ");
         log.text = text;
     }
 
