@@ -68,6 +68,7 @@ Window {
         log.y = 100;
         const regex = /<a /g;
         text = text.replace(regex, "<a style='color: black' ");
+        console.log(text);
         log.text = text;
     }
 
