@@ -7,10 +7,10 @@ Window {
     width: 1404;
     height: 1872;
 
-    property string edition: "wikipedia_en_simple_all_nopic_2019-05";
+    property string edition: "fb92b95d083f0cb6a2a17794cf164156"; //"wikipedia_en_simple_all_nopic_2019-05";
     property string homePage: "";
-    readonly property string lowerCaseKbd: '<center><font size="+2" face="Noto Emoji"><a href="key-q">q</a> <a href="key-w">w</a> <a href="key-e">e</a> <a href="key-r">r</a> <a href="key-t">t</a> <a href="key-y">y</a> <a href="key-u">u</a> <a href="key-i">i</a> <a href="key-o">o</a> <a href="key-p">p</a> <br/><a href="key-a">a</a> <a href="key-s">s</a> <a href="key-d">d</a> <a href="key-f">f</a> <a href="key-g">g</a> <a href="key-h">h</a> <a href="key-j">j</a> <a href="key-k">k</a> <a href="key-l">l</a> <br/><a href="key-z">z</a> <a href="key-x">x</a> <a href="key-c">c</a> <a href="key-v">v</a> <a href="key-b">b</a> <a href="key-n">n</a> <a href="key-m">m</a> <br/><a href="key-shift">⬆️</a> <a href="key-spc">[=========]</a> <a href="key-del">⬅️</a> </font></center>';
-    readonly property string upperCaseKbd: '<center><font size="+2" face="Noto Emoji"><a href="key-Q">Q</a> <a href="key-W">W</a> <a href="key-E">E</a> <a href="key-R">R</a> <a href="key-T">T</a> <a href="key-X">X</a> <a href="key-U">U</a> <a href="key-I">I</a> <a href="key-O">O</a> <a href="key-P">P</a> <br/><a href="key-A">A</a> <a href="key-S">S</a> <a href="key-D">D</a> <a href="key-F">F</a> <a href="key-G">G</a> <a href="key-H">H</a> <a href="key-J">J</a> <a href="key-K">K</a> <a href="key-L">L</a> <br/><a href="key-Z">Z</a> <a href="key-X">X</a> <a href="key-C">C</a> <a href="key-V">V</a> <a href="key-B">B</a> <a href="key-N">N</a> <a href="key-M">M</a> <br/><a href="key-shift">⬆️</a> <a href="key-spc">[=========]</a> <a href="key-del">⬅️</a> </font></center>';
+    readonly property string lowerCaseKbd: '<center><font size="+2" face="Noto Emoji"><a style="color: black" href="key-q">q</a> <a style="color: black" href="key-w">w</a> <a style="color: black" href="key-e">e</a> <a style="color: black" href="key-r">r</a> <a style="color: black" href="key-t">t</a> <a style="color: black" href="key-y">y</a> <a style="color: black" href="key-u">u</a> <a style="color: black" href="key-i">i</a> <a style="color: black" href="key-o">o</a> <a style="color: black" href="key-p">p</a> <br/><a style="color: black" href="key-a">a</a> <a style="color: black" href="key-s">s</a> <a style="color: black" href="key-d">d</a> <a style="color: black" href="key-f">f</a> <a style="color: black" href="key-g">g</a> <a style="color: black" href="key-h">h</a> <a style="color: black" href="key-j">j</a> <a style="color: black" href="key-k">k</a> <a style="color: black" href="key-l">l</a> <br/><a style="color: black" href="key-z">z</a> <a style="color: black" href="key-x">x</a> <a style="color: black" href="key-c">c</a> <a style="color: black" href="key-v">v</a> <a style="color: black" href="key-b">b</a> <a style="color: black" href="key-n">n</a> <a style="color: black" href="key-m">m</a> <br/><a style="color: black" href="key-shift">⬆️</a> <a style="color: black" href="key-spc">[=========]</a> <a style="color: black" href="key-del">⬅️</a> </font></center>';
+    readonly property string upperCaseKbd: '<center><font size="+2" face="Noto Emoji"><a style="color: black" href="key-Q">Q</a> <a style="color: black" href="key-W">W</a> <a style="color: black" href="key-E">E</a> <a style="color: black" href="key-R">R</a> <a style="color: black" href="key-T">T</a> <a style="color: black" href="key-X">X</a> <a style="color: black" href="key-U">U</a> <a style="color: black" href="key-I">I</a> <a style="color: black" href="key-O">O</a> <a style="color: black" href="key-P">P</a> <br/><a style="color: black" href="key-A">A</a> <a style="color: black" href="key-S">S</a> <a style="color: black" href="key-D">D</a> <a style="color: black" href="key-F">F</a> <a style="color: black" href="key-G">G</a> <a style="color: black" href="key-H">H</a> <a style="color: black" href="key-J">J</a> <a style="color: black" href="key-K">K</a> <a style="color: black" href="key-L">L</a> <br/><a style="color: black" href="key-Z">Z</a> <a style="color: black" href="key-X">X</a> <a style="color: black" href="key-C">C</a> <a style="color: black" href="key-V">V</a> <a style="color: black" href="key-B">B</a> <a style="color: black" href="key-N">N</a> <a style="color: black" href="key-M">M</a> <br/><a style="color: black" href="key-shift">⬆️</a> <a style="color: black" href="key-spc">[=========]</a> <a style="color: black" href="key-del">⬅️</a> </font></center>';
     readonly property int dummy: onLoad();
     property var backStack: [];
 
@@ -25,6 +25,8 @@ Window {
     }
 
     function onLoad() {
+        log.text = "<h1>reMarkable Wikipedia</h1>";
+
         if (homePage !== "") {
             return 0;
         }
@@ -64,6 +66,8 @@ Window {
 
     function showRequestInfo(text) {
         log.y = 100;
+        const regex = /<a /g;
+        text = text.replace(regex, "<a style='color: black' ");
         log.text = text;
     }
 
@@ -180,6 +184,20 @@ Window {
         anchors.fill: parent
         color: "white"
 
+        MouseArea {
+            id: scrollMouseArea
+            anchors.fill: parent
+            drag.target: log
+            drag.minimumY: -log.height + parent.height
+            drag.maximumY: 0
+            drag.minimumX: 0
+            drag.maximumX: 0
+            drag.axis: Drag.YAxis
+            onReleased: {
+                console.log("released")
+            }
+        }
+
         Text {
             id: log;
             y: 100;
@@ -294,6 +312,59 @@ Window {
             }
         }
 
+    }
+
+
+
+    Rectangle {
+        id: bupbox;
+        width: 100
+        height: 80
+        color: "white"
+        border.color: "black"
+        border.width: 3
+        radius: 10
+        anchors.right: parent.right;
+        anchors.bottom: bdownbox.top;
+
+        Text {
+            id: bupbutton;
+            text: "<font size='+1' face='Noto Emoji'>⬆️</font>";
+            textFormat: Text.RichText;
+            anchors {horizontalCenter: parent.horizontalCenter;}
+        }
+        MouseArea {
+            id: bupMouseArea
+            anchors.fill: parent
+            onClicked: {
+                back();
+            }
+        }
+    }
+    Rectangle {
+        id: bdownbox;
+        width: 100
+        height: 80
+        color: "white"
+        border.color: "black"
+        border.width: 3
+        radius: 10
+        anchors.right: parent.right;
+        anchors.bottom: parent.bottom;
+
+        Text {
+            id: bsc;
+            text: "<font size='+1' face='Noto Emoji'>⬇️</font>";
+            textFormat: Text.RichText;
+            anchors {horizontalCenter: parent.horizontalCenter;}
+        }
+        MouseArea {
+            id: bdownMouseArea
+            anchors.fill: parent
+            onClicked: {
+                page();
+            }
+        }
     }
 
     Rectangle {
