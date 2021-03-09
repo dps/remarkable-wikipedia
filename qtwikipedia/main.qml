@@ -25,7 +25,7 @@ Window {
     }
 
     function onLoad() {
-        log.text = "<h1>Demo Page</h1>There is a link &rarr; <a href='/' style='color: black;'>here</a>&larr;. If you can see it, gray is good. ";
+        log.text = "<h1>reMarkable Wikipedia</h1>";
 
         if (homePage !== "") {
             return 0;
@@ -35,7 +35,7 @@ Window {
         doc.onreadystatechange = function() {
             if (doc.readyState == XMLHttpRequest.DONE) {
                 var a = doc.responseText;
-                var reg = '<a style="color: black" href="\/([^\/]*)\/A\/([^\/"]*)">Found<\/a>';
+                var reg = '<a href="\/([^\/]*)\/A\/([^\/"]*)">Found<\/a>';
                 edition = a.match(reg)[1];
                 homePage = a.match(reg)[2];
                 goHome();
@@ -315,31 +315,7 @@ Window {
     }
 
 
-    Rectangle {
-        id: bquitbox;
-        width: 100
-        height: 80
-        color: "white"
-        border.color: "black"
-        border.width: 3
-        radius: 10
-        anchors.left: parent.left;
-        anchors.bottom: parent.bottom;
 
-        Text {
-            id: bquitbutton;
-            text: "<font size='+1' face='Noto Emoji'>❌</font>";
-            textFormat: Text.RichText;
-            anchors {horizontalCenter: parent.horizontalCenter;}
-        }
-        MouseArea {
-            id: bquitMouseArea
-            anchors.fill: parent
-            onClicked: {
-                quit();
-            }
-        }
-    }
     Rectangle {
         id: bupbox;
         width: 100
