@@ -249,7 +249,7 @@ Window {
             radius: 10;
 
             MouseArea {
-                id: mouseArea
+                id: scrollMouseArea
                 anchors.fill: parent
                 drag.target: qbox
                 drag.minimumY: 0
