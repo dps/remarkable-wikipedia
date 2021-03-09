@@ -99,6 +99,10 @@ Window {
             goHome();
             return;
         }
+        if (link.startsWith("./")) {
+            link = link.substr(2);
+        }
+
         var friendlyLink = link;
         var m = link.match('\/([^\/]*)\/A\/([^\/"]*)');
         if (m != null) {
@@ -164,10 +168,6 @@ Window {
         // if ((url.indexOf(".html") < 0) && edition == "wikipedia") {
         //     url += ".html";
         // }
-
-        if (page.startsWith("./")) {
-            page = page.substr(2);
-        }
 
         var url = "https://en.wikipedia.org/api/rest_v1/page/html/" + encodeURIComponent(page);
 
