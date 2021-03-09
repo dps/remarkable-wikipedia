@@ -179,7 +179,12 @@ Window {
         var doc = new XMLHttpRequest();
         doc.onreadystatechange = function() {
             if (doc.readyState == XMLHttpRequest.DONE) {
-                var a = doc.responseText;
+                var json = doc.responseJSON;
+                var a = "";
+                for (var i in json.query.pages) {
+                    var page = json.query.pages[i];
+                    a = a + "<p><a href='./" + page.title + "'>" + page.title + "--" + page.description + "</a></p>";
+                }
                 showRequestInfo(a);
             }
         }
