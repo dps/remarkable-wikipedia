@@ -248,6 +248,17 @@ Window {
             border.width: 3;
             radius: 10;
 
+            MouseArea {
+                id: mouseArea
+                anchors.fill: parent
+                drag.target: qbox
+                drag.minimumY: 0
+                drag.maximumY: 100
+                drag.minimumX: 0
+                drag.maximumX: 100
+            }
+    
+
             TextInput {
                 id: query; anchors.top: parent.top;
                 text: "Main_Page";
