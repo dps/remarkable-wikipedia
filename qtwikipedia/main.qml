@@ -322,7 +322,7 @@ Window {
         color: "white"
 
         Rectangle {
-                    id: backbox;
+                    id: bbackbox;
                     width: 100
                     height: 80
                     color: "white"
@@ -333,13 +333,13 @@ Window {
                     y: 5;
 
                     Text {
-                        id: go;
+                        id: bgo;
                         text: "<font size='+1' face='Noto Emoji'>⬅️</font>";
                         textFormat: Text.RichText;
                         anchors {horizontalCenter: parent.horizontalCenter;}
                     }
                     MouseArea {
-                        id: mouseArea
+                        id: bmouseArea
                         anchors.fill: parent
                         onClicked: {
                             if (backStack.length > 1) {
@@ -349,7 +349,7 @@ Window {
                     }
                 }
         Rectangle {
-            id: qbox;
+            id: bqbox;
             width: 1190;
             height: 80;
             y: 5;
@@ -360,7 +360,7 @@ Window {
             radius: 10;
 
             TextInput {
-                id: query; anchors.top: parent.top;
+                id: bquery; anchors.top: parent.top;
                 text: "Main_Page";
                 anchors {horizontalCenter: parent.horizontalCenter;}
 
@@ -385,7 +385,7 @@ Window {
         }
 
         Rectangle {
-            id: downbox;
+            id: bdownbox;
             width: 100
             height: 80
             color: "white"
@@ -395,13 +395,13 @@ Window {
             y: 5; anchors.left: qbox.right;
 
             Text {
-                id: sc;
+                id: bsc;
                 text: "<font size='+1' face='Noto Emoji'>🏠</font>";
                 textFormat: Text.RichText;
                 anchors {horizontalCenter: parent.horizontalCenter;}
             }
             MouseArea {
-                id: downMouseArea
+                id: bdownMouseArea
                 anchors.fill: parent
                 onClicked: {
                     goHome();
