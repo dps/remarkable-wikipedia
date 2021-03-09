@@ -30,20 +30,21 @@ Window {
         if (homePage !== "") {
             return 0;
         }
+        loadIndexFile();
 
-        var doc = new XMLHttpRequest();
-        doc.onreadystatechange = function() {
-            if (doc.readyState == XMLHttpRequest.DONE) {
-                var a = doc.responseText;
-                var reg = '<a href="\/([^\/]*)\/A\/([^\/"]*)">Found<\/a>';
-                edition = a.match(reg)[1];
-                homePage = a.match(reg)[2];
-                goHome();
-            }
-        }
+        // var doc = new XMLHttpRequest();
+        // doc.onreadystatechange = function() {
+        //     if (doc.readyState == XMLHttpRequest.DONE) {
+        //         var a = doc.responseText;
+        //         var reg = '<a href="\/([^\/]*)\/A\/([^\/"]*)">Found<\/a>';
+        //         edition = a.match(reg)[1];
+        //         homePage = a.match(reg)[2];
+        //         goHome();
+        //     }
+        // }
 
-        doc.open("GET", "http://127.0.0.1:8081/");
-        doc.send();
+        // doc.open("GET", "http://127.0.0.1:8081/");
+        // doc.send();
         return 0;
     }
 
@@ -59,8 +60,9 @@ Window {
                 log.forceActiveFocus();
             }
         }
-        doc.open("GET", "http://127.0.0.1:8081/" + edition + "/A/" + homePage);
-
+        // doc.open("GET", "http://127.0.0.1:8081/" + edition + "/A/" + homePage);
+        // https://en.wikipedia.org/api/rest_v1/page/html/Main_Page
+        doc.open("GET", "https://en.wikipedia.org/api/rest_v1/page/html/Main_Page");
         doc.send();
     }
 
