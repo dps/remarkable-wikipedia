@@ -252,10 +252,14 @@ Window {
                 id: scrollMouseArea
                 anchors.fill: parent
                 drag.target: qbox
-                drag.minimumY: 0
-                drag.maximumY: 100
+                drag.minimumY: -400
+                drag.maximumY: 400
                 drag.minimumX: 0
-                drag.maximumX: 100
+                drag.maximumX: 0
+                drag.axis: Drag.YAxis
+                onReleased: {
+                    console.log("released")
+                }
             }
     
 
