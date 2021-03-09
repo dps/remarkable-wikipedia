@@ -316,6 +316,31 @@ Window {
 
 
     Rectangle {
+        id: bupbox;
+        width: 100
+        height: 80
+        color: "white"
+        border.color: "black"
+        border.width: 3
+        radius: 10
+        anchors.right: parent.right;
+        anchors.bottom: bdownbox.top;
+
+        Text {
+            id: bupbutton;
+            text: "<font size='+1' face='Noto Emoji'>⬆️</font>";
+            textFormat: Text.RichText;
+            anchors {horizontalCenter: parent.horizontalCenter;}
+        }
+        MouseArea {
+            id: bupMouseArea
+            anchors.fill: parent
+            onClicked: {
+                back();
+            }
+        }
+    }
+    Rectangle {
         id: bdownbox;
         width: 100
         height: 80
