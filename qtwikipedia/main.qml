@@ -315,6 +315,103 @@ Window {
     }
 
     Rectangle {
+        anchors.left: parent.left;
+        anchors.bottom: parent.bottom;
+        anchors.right: parent.right;
+        height: 100;
+        color: "white"
+
+        Rectangle {
+                    id: backbox;
+                    width: 100
+                    height: 80
+                    color: "white"
+                    border.color: "black"
+                    border.width: 3
+                    radius: 10;
+                    x: 10;
+                    y: 5;
+
+                    Text {
+                        id: go;
+                        text: "<font size='+1' face='Noto Emoji'>⬅️</font>";
+                        textFormat: Text.RichText;
+                        anchors {horizontalCenter: parent.horizontalCenter;}
+                    }
+                    MouseArea {
+                        id: mouseArea
+                        anchors.fill: parent
+                        onClicked: {
+                            if (backStack.length > 1) {
+                              navigateBack();
+                            }
+                        }
+                    }
+                }
+        Rectangle {
+            id: qbox;
+            width: 1190;
+            height: 80;
+            y: 5;
+            anchors.left: backbox.right;
+            color: "white";
+            border.color: "black";
+            border.width: 3;
+            radius: 10;
+
+            TextInput {
+                id: query; anchors.top: parent.top;
+                text: "Main_Page";
+                anchors {horizontalCenter: parent.horizontalCenter;}
+
+                Keys.enabled: true;
+
+                Keys.onReleased: {
+                    handleKey(event);
+                }
+
+                onFocusChanged: {
+                    if (focus) {
+                        query.text = "";
+                        kbdKeys.text = upperCaseKbd;
+                        kbd.visible = true;
+                    } else {
+                        kbd.visible = false;
+                    }
+                }
+
+            }
+
+        }
+
+        Rectangle {
+            id: downbox;
+            width: 100
+            height: 80
+            color: "white"
+            border.color: "black"
+            border.width: 3
+            radius: 10
+            y: 5; anchors.left: qbox.right;
+
+            Text {
+                id: sc;
+                text: "<font size='+1' face='Noto Emoji'>🏠</font>";
+                textFormat: Text.RichText;
+                anchors {horizontalCenter: parent.horizontalCenter;}
+            }
+            MouseArea {
+                id: downMouseArea
+                anchors.fill: parent
+                onClicked: {
+                    goHome();
+                }
+            }
+        }
+
+    }
+
+    Rectangle {
         id: kbd;
         visible: false;
         anchors.left: parent.left;
