@@ -163,6 +163,8 @@ Window {
             url += ".html";
         }
 
+        url = "https://en.wikipedia.org/api/rest_v1/page/html/Apollo_11";
+
         doc.open("GET", url);
         doc.send();
     }
