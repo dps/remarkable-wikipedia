@@ -314,101 +314,31 @@ Window {
 
     }
 
+
     Rectangle {
-        anchors.left: parent.left;
-        anchors.bottom: parent.bottom;
-        anchors.right: parent.right;
-        height: 100;
+        id: bdownbox;
+        width: 100
+        height: 80
         color: "white"
+        border.color: "black"
+        border.width: 3
+        radius: 10
+        anchors.right: parent.right;
+        anchors.bottom: parent.bottom;
 
-        Rectangle {
-                    id: bbackbox;
-                    width: 100
-                    height: 80
-                    color: "white"
-                    border.color: "black"
-                    border.width: 3
-                    radius: 10;
-                    x: 10;
-                    y: 5;
-
-                    Text {
-                        id: bgo;
-                        text: "<font size='+1' face='Noto Emoji'>⬅️</font>";
-                        textFormat: Text.RichText;
-                        anchors {horizontalCenter: parent.horizontalCenter;}
-                    }
-                    MouseArea {
-                        id: bmouseArea
-                        anchors.fill: parent
-                        onClicked: {
-                            if (backStack.length > 1) {
-                              navigateBack();
-                            }
-                        }
-                    }
-                }
-        Rectangle {
-            id: bqbox;
-            width: 1190;
-            height: 80;
-            y: 5;
-            anchors.left: backbox.right;
-            color: "white";
-            border.color: "black";
-            border.width: 3;
-            radius: 10;
-
-            TextInput {
-                id: bquery; anchors.top: parent.top;
-                text: "Main_Page";
-                anchors {horizontalCenter: parent.horizontalCenter;}
-
-                Keys.enabled: true;
-
-                Keys.onReleased: {
-                    handleKey(event);
-                }
-
-                onFocusChanged: {
-                    if (focus) {
-                        query.text = "";
-                        kbdKeys.text = upperCaseKbd;
-                        kbd.visible = true;
-                    } else {
-                        kbd.visible = false;
-                    }
-                }
-
-            }
-
+        Text {
+            id: bsc;
+            text: "<font size='+1' face='Noto Emoji'>⬇️</font>";
+            textFormat: Text.RichText;
+            anchors {horizontalCenter: parent.horizontalCenter;}
         }
-
-        Rectangle {
-            id: bdownbox;
-            width: 100
-            height: 80
-            color: "white"
-            border.color: "black"
-            border.width: 3
-            radius: 10
-            y: 5; anchors.left: qbox.right;
-
-            Text {
-                id: bsc;
-                text: "<font size='+1' face='Noto Emoji'>🏠</font>";
-                textFormat: Text.RichText;
-                anchors {horizontalCenter: parent.horizontalCenter;}
-            }
-            MouseArea {
-                id: bdownMouseArea
-                anchors.fill: parent
-                onClicked: {
-                    goHome();
-                }
+        MouseArea {
+            id: bdownMouseArea
+            anchors.fill: parent
+            onClicked: {
+                page();
             }
         }
-
     }
 
     Rectangle {
