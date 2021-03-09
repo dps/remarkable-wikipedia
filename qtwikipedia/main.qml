@@ -187,7 +187,7 @@ Window {
         MouseArea {
             id: scrollMouseArea
             anchors.fill: parent
-            drag.target: qbox
+            drag.target: log
             drag.minimumY: -400
             drag.maximumY: 400
             drag.minimumX: 0
