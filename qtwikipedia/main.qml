@@ -333,7 +333,7 @@ Window {
             anchors {horizontalCenter: parent.horizontalCenter;}
         }
         MouseArea {
-            id: bupMouseArea
+            id: bquitMouseArea
             anchors.fill: parent
             onClicked: {
                 quit();
