@@ -184,7 +184,9 @@ Window {
             }
         }
 
-        doc.open("GET", "http://127.0.0.1:8081/" + edition + "/A/" + query.text);
+        //doc.open("GET", "http://127.0.0.1:8081/" + edition + "/A/" + query.text);
+        doc.open("GET", "https://en.wikipedia.org/w/api.php?action=query&format=json&generator=prefixsearch&prop=description&redirects=&gpsnamespace=0&gpslimit=6&gpssearch=" + encodeURIComponent(query.text));
+
         doc.send();
     }
 
