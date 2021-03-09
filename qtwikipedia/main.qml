@@ -163,6 +163,10 @@ Window {
         //     url += ".html";
         // }
 
+        if (page.startsWith("./")) {
+            page = page.substr(2);
+        }
+
         var url = "https://en.wikipedia.org/api/rest_v1/page/html/" + encodeURIComponent(page);
 
         doc.open("GET", url);
