@@ -188,8 +188,8 @@ Window {
             id: scrollMouseArea
             anchors.fill: parent
             drag.target: log
-            drag.minimumY: 0
-            drag.maximumY: log.height
+            drag.minimumY: -log.height + parent.height
+            drag.maximumY: 0
             drag.minimumX: 0
             drag.maximumX: 0
             drag.axis: Drag.YAxis
