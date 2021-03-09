@@ -146,11 +146,11 @@ Window {
             if (doc.readyState == XMLHttpRequest.DONE) {
                 log.text = "Rendering..."
                 var a = doc.responseText;
-                if (edition == "wikipedia" || edition == "1f98c4ecc0d71bc828dc40533d33c426") {
-                    a = a.substr(a.indexOf("<a id=\"top\"></a>"));
-                } else {
-                    a = a.substr(a.indexOf("<div id=\"bodyContent\""));
-                }
+                // if (edition == "wikipedia" || edition == "1f98c4ecc0d71bc828dc40533d33c426") {
+                //     a = a.substr(a.indexOf("<a id=\"top\"></a>"));
+                // } else {
+                //     a = a.substr(a.indexOf("<div id=\"bodyContent\""));
+                // }
                 showRequestInfo(a);
             }
         }
@@ -163,7 +163,7 @@ Window {
             url += ".html";
         }
 
-        url = "http://10.11.99.2:8000/Apollo_11";
+        url = "https://en.wikipedia.org/api/rest_v1/page/html/Apollo_11";
 
         doc.open("GET", url);
         doc.send();
