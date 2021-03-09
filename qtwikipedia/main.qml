@@ -177,9 +177,10 @@ Window {
 
     function refreshSuggest() {
         var doc = new XMLHttpRequest();
+        doc.overrideMimeType("application/json");
         doc.onreadystatechange = function() {
             if (doc.readyState == XMLHttpRequest.DONE) {
-                var json = doc.responseJSON;
+                var json = JSON.parse(doc.responseText);
                 var a = "";
                 for (var i in json.query.pages) {
                     var page = json.query.pages[i];
