@@ -154,16 +154,16 @@ Window {
                 showRequestInfo(a);
             }
         }
-        var url = "http://127.0.0.1:8081/" + edition + "/A/" + encodeURIComponent(page);
-        if (page.indexOf(edition) > 0) {
-            url = "http://127.0.0.1:8081" + page;
-        }
+        // var url = "http://127.0.0.1:8081/" + edition + "/A/" + encodeURIComponent(page);
+        // if (page.indexOf(edition) > 0) {
+        //     url = "http://127.0.0.1:8081" + page;
+        // }
 
-        if ((url.indexOf(".html") < 0) && edition == "wikipedia") {
-            url += ".html";
-        }
+        // if ((url.indexOf(".html") < 0) && edition == "wikipedia") {
+        //     url += ".html";
+        // }
 
-        url = "https://en.wikipedia.org/api/rest_v1/page/html/Apollo_11";
+        var url = "https://en.wikipedia.org/api/rest_v1/page/html/" + encodeURIComponent(page);
 
         doc.open("GET", url);
         doc.send();
