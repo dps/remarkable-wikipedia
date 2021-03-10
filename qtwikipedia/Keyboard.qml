@@ -18,6 +18,10 @@ Item {
     property bool hasAlt: false
     property bool hasCtrl: false
     property bool hasMeta: false
+
+    function charPress(text, modifiers) {
+        console.log("charPress " + text + " " + modifiers);
+    }
     function hide(){
         keyboard.visible = false;
         keyboard.focus = true;
