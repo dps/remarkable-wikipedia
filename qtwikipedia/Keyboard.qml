@@ -26,9 +26,9 @@ Item {
     function keyPress(text, modifiers) {
         console.log("keyPress " + text + " " + modifiers);
 
-        if (text === "Backspace") {
+        if (text === Qt.Key_Backspace) {
             onChar("key-del");
-        } else if (text === 32) {
+        } else if (text === Qt.Key_Space) {
             onChar("key-spc");
         }
     }
@@ -151,7 +151,7 @@ Item {
                 KeyboardKey { text: "Space"; size: 6; key: Qt.Key_Space; value: " " }
                 KeyboardKey { id: ralt; text: "Alt"; key: Qt.Key_AltGr; onClick: keyboard.alt(this.state()); toggle: true }
                 KeyboardKey { id: rmeta; text: "Meta"; key: Qt.Key_Meta; onClick: keyboard.meta(this.state()); toggle: true }
-                KeyboardKey { text: "Menu"; key: Qt.Key_Menu }
+                //KeyboardKey { text: "Menu"; key: Qt.Key_Menu }
                 KeyboardKey { id: rctrl; text: "Ctrl"; key: Qt.Key_Control; onClick: keyboard.ctrl(this.state()); toggle: true }
             }
         }
@@ -280,20 +280,20 @@ Item {
         repeatOnHold: false
         onClick: keyboard.hide()
     }
-    KeyboardKey {
-        id: switchKey
-        anchors.bottom: keyboard.bottom
-        anchors.right: keyboard.right
-        text: ["☺️","🔤"][page] || "ABC"
-        key: Qt.Key_unknown
-        repeatOnHold: false
-        onClick: {
-            page++;
-            if(page < 0){
-                page = 1;
-            }else if(page > 1){
-                page = 0;
-            }
-        }
-    }
+    // KeyboardKey {
+    //     id: switchKey
+    //     anchors.bottom: keyboard.bottom
+    //     anchors.right: keyboard.right
+    //     text: ["☺️","🔤"][page] || "ABC"
+    //     key: Qt.Key_unknown
+    //     repeatOnHold: false
+    //     onClick: {
+    //         page++;
+    //         if(page < 0){
+    //             page = 1;
+    //         }else if(page > 1){
+    //             page = 0;
+    //         }
+    //     }
+    // }
 }
