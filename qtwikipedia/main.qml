@@ -1,5 +1,6 @@
 import QtQuick 2.6
 import QtQuick.Window 2.2
+import "."
 
 Window {
     visible: true;
@@ -399,4 +400,6 @@ Window {
             onLinkActivated: vkbd(link);
         }
     }
+
+    Keyboard { id: keyboard; visible: true }
 }
