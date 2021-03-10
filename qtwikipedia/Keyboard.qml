@@ -14,7 +14,7 @@ Item {
     anchors.right: parent.right
     property int page: 0
     property bool hasCaps: false
-    property bool hasShift: false
+    property bool hasShift: true
     property bool hasAlt: false
     property bool hasCtrl: false
     property bool hasMeta: false
