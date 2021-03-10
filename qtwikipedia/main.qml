@@ -198,20 +198,6 @@ Window {
         anchors.fill: parent
         color: "white"
 
-        // MouseArea {
-        //     id: scrollMouseArea
-        //     anchors.fill: parent
-        //     drag.target: log
-        //     drag.minimumY: -log.height + parent.height
-        //     drag.maximumY: 0
-        //     drag.minimumX: 0
-        //     drag.maximumX: 0
-        //     drag.axis: Drag.YAxis
-        //     onReleased: {
-        //         console.log("released")
-        //     }
-        // }
-
         Text {
             id: log;
             y: 100;
