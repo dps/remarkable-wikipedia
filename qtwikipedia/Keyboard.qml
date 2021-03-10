@@ -37,6 +37,7 @@ Item {
     }
     function caps(state){
         keyboard.hasCaps = state;
+        keyboard.hasShift = state;
     }
     function shift(state){
         keyboard.hasShift = state;
