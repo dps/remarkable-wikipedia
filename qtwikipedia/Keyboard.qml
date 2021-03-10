@@ -2,11 +2,10 @@
 // under the MIT license.
 // https://github.com/Eeems/oxidize/blob/master/LICENSE.md
 import QtQuick 2.9
-import Keyboard 1.0
 import "."
 
 
-Keyboard {
+Item {
     objectName: "keyboard"
     id: keyboard
     clip: true
