@@ -21,6 +21,7 @@ Item {
 
     function charPress(text, modifiers) {
         console.log("charPress " + text + " " + modifiers);
+        onChar(text);
     }
     function hide(){
         keyboard.visible = false;
@@ -37,7 +38,7 @@ Item {
     }
     function caps(state){
         keyboard.hasCaps = state;
-        keyboard.hasShift = state;
+        keyboard.hasShift = !keyboard.hasShift;
     }
     function shift(state){
         keyboard.hasShift = state;

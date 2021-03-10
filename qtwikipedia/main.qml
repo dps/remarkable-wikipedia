@@ -401,5 +401,11 @@ Window {
         }
     }
 
-    Keyboard { id: keyboard; visible: true }
+    Keyboard {
+        id: keyboard;
+        visible: true;
+        function onChar(ch) {
+            vkbd(ch);
+        }
+    }
 }
