@@ -293,9 +293,9 @@ Window {
                     if (focus) {
                         query.text = "";
                         kbdKeys.text = upperCaseKbd;
-                        kbd.visible = true;
+                        keyboard.visible = true;
                     } else {
-                        kbd.visible = false;
+                        keyboard.visible = false;
                     }
                 }
 
@@ -403,7 +403,7 @@ Window {
 
     Keyboard {
         id: keyboard;
-        visible: true;
+        visible: false;
         function onChar(ch) {
             vkbd(ch);
         }
