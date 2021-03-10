@@ -6,6 +6,7 @@
 Q_IMPORT_PLUGIN(QsgEpaperPlugin)
 #endif
 // end reMarkable additions
+#include <QtDBus>
 #include "keyboard.h"
 
 
