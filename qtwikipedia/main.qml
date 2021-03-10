@@ -36,6 +36,7 @@ Window {
         doc.onreadystatechange = function() {
             if (doc.readyState == XMLHttpRequest.DONE) {
                 var a = doc.responseText;
+                console.log(a);
                 var reg = '<a href="\/([^\/]*)\/A\/([^\/"]*)">Found<\/a>';
                 edition = a.match(reg)[1];
                 homePage = a.match(reg)[2];
