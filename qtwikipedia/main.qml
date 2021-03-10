@@ -121,15 +121,9 @@ Window {
         } else if (link === "key-del") {
             query.text = query.text.substring(0, query.text.length - 1);
             c = '';
-        } else if (link === "key-shift") {
-            c = '';
         }
         query.text += c;
-        if (link !== "key-shift") {
-            refreshSuggest();
-            if (query.text.length == 1) {
-                toggleShiftState();
-            }
+        refreshSuggest();
         }
     }
 
