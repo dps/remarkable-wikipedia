@@ -166,7 +166,7 @@ Window {
                 var a = "";
                 for (var i in json.query.pages) {
                     var page = json.query.pages[i];
-                    a = a + "<a href='./" + page.title + "'><h2>" + page.title + "</h2><p>" + page.description + "</p></a>";
+                    a = a + "<a href='./" + page.title + "'><h2>" + page.title + "</h2><p>" + (page.description || "") + "</p></a>";
                 }
                 showRequestInfo(a);
             }
