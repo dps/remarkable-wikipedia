@@ -6,6 +6,8 @@
 Q_IMPORT_PLUGIN(QsgEpaperPlugin)
 #endif
 // end reMarkable additions
+#include "keyboard.h"
+
 
 int main(int argc, char *argv[])
 {
@@ -18,6 +20,8 @@ int main(int argc, char *argv[])
     qputenv("QT_QPA_GENERIC_PLUGINS", "evdevtablet");
 #endif
     // end reMarkable additions
+
+    qmlRegisterType<Keyboard>("Keyboard", 1, 0, "Keyboard");
 
     QGuiApplication app(argc, argv);
 
