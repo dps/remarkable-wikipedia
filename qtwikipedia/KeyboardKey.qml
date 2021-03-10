@@ -89,7 +89,9 @@ Item {
                 }
             }
             if(!root.toggle){
-                keyboard.hasShift = false;
+                if (!keyboard.hasCaps) {
+                  keyboard.hasShift = false;
+                }
                 keyboard.hasAlt = false;
                 keyboard.hasCtrl = false;
                 keyboard.hasMeta =false;
