@@ -37,7 +37,7 @@ Item {
     width: size * basesize
     height: basesize
     function state() {
-        return toggle;
+        return button.state;
     }
     function getText(){
         if(keyboard.hasShift && keyboard.hasAlt && keyboard.hasCtrl){
