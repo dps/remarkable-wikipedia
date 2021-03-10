@@ -181,13 +181,18 @@ Window {
         var doc = new XMLHttpRequest();
         doc.onreadystatechange = function() {
             if (doc.readyState == XMLHttpRequest.DONE) {
-                var json = JSON.parse(doc.responseText);
-                var a = "";
-                for (var i in json.query.pages) {
-                    var page = json.query.pages[i];
-                    a = a + "<a href='./" + page.title + "'><h2>" + page.title + "</h2><p>" + (page.description || "") + "</p></a>";
+                if (localZimMode) {
+                    var a = doc.responseText;
+                    showRequestInfo(a);
+                } else {
+                    var json = JSON.parse(doc.responseText);
+                    var a = "";
+                    for (var i in json.query.pages) {
+                        var page = json.query.pages[i];
+                        a = a + "<a href='./" + page.title + "'><h2>" + page.title + "</h2><p>" + (page.description || "") + "</p></a>";
+                    }
+                    showRequestInfo(a);
                 }
-                showRequestInfo(a);
             }
         }
 
