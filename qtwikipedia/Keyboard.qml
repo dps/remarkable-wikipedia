@@ -23,6 +23,13 @@ Item {
         console.log("charPress " + text + " " + modifiers);
         onChar(text);
     }
+    function keyPress(text, modifiers) {
+        if (text === "Backspace") {
+            onChar("key-del");
+        } else if (text === "Space") {
+            onChar("key-spc");
+        }
+    }
     function hide(){
         keyboard.visible = false;
         keyboard.focus = true;
