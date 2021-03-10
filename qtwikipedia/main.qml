@@ -36,13 +36,13 @@ Window {
         doc.onreadystatechange = function() {
             if (doc.readyState == XMLHttpRequest.DONE) {
                 var a = doc.responseText;
-                console.log(a);
-                if (a === "qml:") {
+                var reg = '<a href="\/([^\/]*)\/A\/([^\/"]*)">Found<\/a>';
+                var m = a.match(reg);
+                if (!m) {
                     localZimMode = false;
                     loadIndexFile();
                     return;
                 }
-                var reg = '<a href="\/([^\/]*)\/A\/([^\/"]*)">Found<\/a>';
                 edition = a.match(reg)[1];
                 homePage = a.match(reg)[2];
                 goHome();
