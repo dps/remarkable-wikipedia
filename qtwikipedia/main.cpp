@@ -6,6 +6,8 @@
 Q_IMPORT_PLUGIN(QsgEpaperPlugin)
 #endif
 // end reMarkable additions
+#include <QtDBus>
+
 
 int main(int argc, char *argv[])
 {

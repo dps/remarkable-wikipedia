@@ -1,5 +1,9 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
+        <file>Button.qml</file>
+        <file>SwipeArea.qml</file>
+        <file>Keyboard.qml</file>
+        <file>KeyboardKey.qml</file>
     </qresource>
 </RCC>
