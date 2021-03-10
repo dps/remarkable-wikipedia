@@ -393,6 +393,14 @@ Window {
         }
     }
 
+    Text {
+        id: mode;
+        text: "<font size='+1' face='Noto Emoji'>🌎</font>";
+        textFormat: Text.RichText;
+        anchors.bottom: parent.bottom;
+        anchors.left: parent.left;
+    }
+
     Keyboard {
         id: keyboard;
         visible: false;
