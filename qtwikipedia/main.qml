@@ -184,8 +184,10 @@ Window {
         onSwipe: {
             if(direction == "down"){
                 console.log("Scroll up");
+                back();
             }else if(direction == "up"){
                 console.log("Scroll down");
+                page();
             }else{
                 return;
             }
