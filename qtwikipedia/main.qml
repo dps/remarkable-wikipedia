@@ -10,8 +10,6 @@ Window {
 
     property string edition: "fb92b95d083f0cb6a2a17794cf164156"; //"wikipedia_en_simple_all_nopic_2019-05";
     property string homePage: "";
-    readonly property string lowerCaseKbd: '<center><font size="+2" face="Noto Emoji"><a style="color: black" href="key-q">q</a> <a style="color: black" href="key-w">w</a> <a style="color: black" href="key-e">e</a> <a style="color: black" href="key-r">r</a> <a style="color: black" href="key-t">t</a> <a style="color: black" href="key-y">y</a> <a style="color: black" href="key-u">u</a> <a style="color: black" href="key-i">i</a> <a style="color: black" href="key-o">o</a> <a style="color: black" href="key-p">p</a> <br/><a style="color: black" href="key-a">a</a> <a style="color: black" href="key-s">s</a> <a style="color: black" href="key-d">d</a> <a style="color: black" href="key-f">f</a> <a style="color: black" href="key-g">g</a> <a style="color: black" href="key-h">h</a> <a style="color: black" href="key-j">j</a> <a style="color: black" href="key-k">k</a> <a style="color: black" href="key-l">l</a> <br/><a style="color: black" href="key-z">z</a> <a style="color: black" href="key-x">x</a> <a style="color: black" href="key-c">c</a> <a style="color: black" href="key-v">v</a> <a style="color: black" href="key-b">b</a> <a style="color: black" href="key-n">n</a> <a style="color: black" href="key-m">m</a> <br/><a style="color: black" href="key-shift">⬆️</a> <a style="color: black" href="key-spc">[=========]</a> <a style="color: black" href="key-del">⬅️</a> </font></center>';
-    readonly property string upperCaseKbd: '<center><font size="+2" face="Noto Emoji"><a style="color: black" href="key-Q">Q</a> <a style="color: black" href="key-W">W</a> <a style="color: black" href="key-E">E</a> <a style="color: black" href="key-R">R</a> <a style="color: black" href="key-T">T</a> <a style="color: black" href="key-X">X</a> <a style="color: black" href="key-U">U</a> <a style="color: black" href="key-I">I</a> <a style="color: black" href="key-O">O</a> <a style="color: black" href="key-P">P</a> <br/><a style="color: black" href="key-A">A</a> <a style="color: black" href="key-S">S</a> <a style="color: black" href="key-D">D</a> <a style="color: black" href="key-F">F</a> <a style="color: black" href="key-G">G</a> <a style="color: black" href="key-H">H</a> <a style="color: black" href="key-J">J</a> <a style="color: black" href="key-K">K</a> <a style="color: black" href="key-L">L</a> <br/><a style="color: black" href="key-Z">Z</a> <a style="color: black" href="key-X">X</a> <a style="color: black" href="key-C">C</a> <a style="color: black" href="key-V">V</a> <a style="color: black" href="key-B">B</a> <a style="color: black" href="key-N">N</a> <a style="color: black" href="key-M">M</a> <br/><a style="color: black" href="key-shift">⬆️</a> <a style="color: black" href="key-spc">[=========]</a> <a style="color: black" href="key-del">⬅️</a> </font></center>';
     readonly property int dummy: onLoad();
     property var backStack: [];
 
@@ -116,14 +114,6 @@ Window {
         log.forceActiveFocus();
     }
 
-    function toggleShiftState() {
-        if (kbdKeys.text === lowerCaseKbd) {
-            kbdKeys.text = upperCaseKbd;
-        } else {
-            kbdKeys.text = lowerCaseKbd;
-        }
-    }
-
     function vkbd(link) {
         var c = link.substring(link.length - 1);
         if (link === "key-spc") {
@@ -132,7 +122,6 @@ Window {
             query.text = query.text.substring(0, query.text.length - 1);
             c = '';
         } else if (link === "key-shift") {
-            toggleShiftState();
             c = '';
         }
         query.text += c;
@@ -292,7 +281,6 @@ Window {
                 onFocusChanged: {
                     if (focus) {
                         query.text = "";
-                        kbdKeys.text = upperCaseKbd;
                         keyboard.visible = true;
                     } else {
                         keyboard.visible = false;
@@ -380,24 +368,6 @@ Window {
             onClicked: {
                 page();
             }
-        }
-    }
-
-    Rectangle {
-        id: kbd;
-        visible: false;
-        anchors.left: parent.left;
-        anchors.bottom: parent.bottom;
-        anchors.right: parent.right;
-        height: 320;
-        color: "white"
-
-        Text {
-            id: kbdKeys
-            anchors.centerIn: parent
-            text: lowerCaseKbd;
-            textFormat: Text.RichText;
-            onLinkActivated: vkbd(link);
         }
     }
 
