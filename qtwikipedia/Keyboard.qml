@@ -28,7 +28,7 @@ Item {
 
         if (text === "Backspace") {
             onChar("key-del");
-        } else if (text === "Space") {
+        } else if (text === 32) {
             onChar("key-spc");
         }
     }
