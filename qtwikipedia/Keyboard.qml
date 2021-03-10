@@ -24,6 +24,8 @@ Item {
         onChar(text);
     }
     function keyPress(text, modifiers) {
+        console.log("keyPress " + text + " " + modifiers);
+
         if (text === "Backspace") {
             onChar("key-del");
         } else if (text === "Space") {
