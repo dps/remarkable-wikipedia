@@ -8,6 +8,7 @@ Window {
     width: 1404;
     height: 1872;
 
+    property bool localZimMode: true;
     property string edition: "fb92b95d083f0cb6a2a17794cf164156"; //"wikipedia_en_simple_all_nopic_2019-05";
     property string homePage: "";
     readonly property int dummy: onLoad();
@@ -29,21 +30,25 @@ Window {
         if (homePage !== "") {
             return 0;
         }
-        loadIndexFile();
+        //loadIndexFile();
 
-        // var doc = new XMLHttpRequest();
-        // doc.onreadystatechange = function() {
-        //     if (doc.readyState == XMLHttpRequest.DONE) {
-        //         var a = doc.responseText;
-        //         var reg = '<a href="\/([^\/]*)\/A\/([^\/"]*)">Found<\/a>';
-        //         edition = a.match(reg)[1];
-        //         homePage = a.match(reg)[2];
-        //         goHome();
-        //     }
-        // }
+        var doc = new XMLHttpRequest();
+        doc.onreadystatechange = function() {
+            if (doc.readyState == XMLHttpRequest.DONE) {
+                var a = doc.responseText;
+                var reg = '<a href="\/([^\/]*)\/A\/([^\/"]*)">Found<\/a>';
+                edition = a.match(reg)[1];
+                homePage = a.match(reg)[2];
+                goHome();
+            }
+        }
+        doc.onerror = function() {
+            localZimMode = false;
+            loadIndexFile();
+        }
 
-        // doc.open("GET", "http://127.0.0.1:8081/");
-        // doc.send();
+        doc.open("GET", "http://127.0.0.1:8081/");
+        doc.send();
         return 0;
     }
 
@@ -59,9 +64,11 @@ Window {
                 log.forceActiveFocus();
             }
         }
-        // doc.open("GET", "http://127.0.0.1:8081/" + edition + "/A/" + homePage);
-        // https://en.wikipedia.org/api/rest_v1/page/html/Main_Page
-        doc.open("GET", "https://en.wikipedia.org/api/rest_v1/page/html/Main_Page");
+        if (localZimMode) {
+          doc.open("GET", "http://127.0.0.1:8081/" + edition + "/A/" + homePage);
+        } else {
+          doc.open("GET", "https://en.wikipedia.org/api/rest_v1/page/html/Main_Page");
+        }
         doc.send();
     }
 
@@ -135,24 +142,30 @@ Window {
             if (doc.readyState == XMLHttpRequest.DONE) {
                 log.text = "Rendering..."
                 var a = doc.responseText;
-                // if (edition == "wikipedia" || edition == "1f98c4ecc0d71bc828dc40533d33c426") {
-                //     a = a.substr(a.indexOf("<a id=\"top\"></a>"));
-                // } else {
-                //     a = a.substr(a.indexOf("<div id=\"bodyContent\""));
-                // }
+                if (localZimMode) {
+                    if (edition == "wikipedia" || edition == "1f98c4ecc0d71bc828dc40533d33c426") {
+                        a = a.substr(a.indexOf("<a id=\"top\"></a>"));
+                    } else {
+                        a = a.substr(a.indexOf("<div id=\"bodyContent\""));
+                    }
+                }
                 showRequestInfo(a);
             }
         }
-        // var url = "http://127.0.0.1:8081/" + edition + "/A/" + encodeURIComponent(page);
-        // if (page.indexOf(edition) > 0) {
-        //     url = "http://127.0.0.1:8081" + page;
-        // }
+        var url;
+        if (localZimMode) {
+            url = "http://127.0.0.1:8081/" + edition + "/A/" + encodeURIComponent(page);
+            if (page.indexOf(edition) > 0) {
+                url = "http://127.0.0.1:8081" + page;
+            }
 
-        // if ((url.indexOf(".html") < 0) && edition == "wikipedia") {
-        //     url += ".html";
-        // }
+            if ((url.indexOf(".html") < 0) && edition == "wikipedia") {
+                url += ".html";
+            }
+        } else {
+            url = "https://en.wikipedia.org/api/rest_v1/page/mobile-html/" + encodeURIComponent(page);
+        }
 
-        var url = "https://en.wikipedia.org/api/rest_v1/page/mobile-html/" + encodeURIComponent(page);
 
         doc.open("GET", url);
         doc.send();
@@ -172,8 +185,11 @@ Window {
             }
         }
 
-        //doc.open("GET", "http://127.0.0.1:8081/" + edition + "/A/" + query.text);
-        doc.open("GET", "https://en.wikipedia.org/w/api.php?action=query&format=json&generator=prefixsearch&prop=description&redirects=&gpsnamespace=0&gpslimit=6&gpssearch=" + encodeURIComponent(query.text));
+        if (localZimMode) {
+          doc.open("GET", "http://127.0.0.1:8081/" + edition + "/A/" + query.text);
+        } else {
+          doc.open("GET", "https://en.wikipedia.org/w/api.php?action=query&format=json&generator=prefixsearch&prop=description&redirects=&gpsnamespace=0&gpslimit=6&gpssearch=" + encodeURIComponent(query.text));
+        }
 
         doc.send();
     }
