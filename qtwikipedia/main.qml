@@ -124,7 +124,6 @@ Window {
         }
         query.text += c;
         refreshSuggest();
-        }
     }
 
     function retrieve(page) {
