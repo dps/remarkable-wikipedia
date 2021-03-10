@@ -393,9 +393,13 @@ Window {
         }
     }
 
+    function getModeText() {
+        return localZimMode ? "📱" : "🌎";
+    }
+
     Text {
         id: mode;
-        text: "<font size='+1' face='Noto Emoji'>🌎📱</font>";
+        text: "<font size='+1' face='Noto Emoji'>" + getModeText() + "</font>";
         textFormat: Text.RichText;
         anchors.bottom: parent.bottom;
         anchors.left: parent.left;
