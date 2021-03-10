@@ -24,7 +24,6 @@ Item {
     property string shiftctrlmetatext: shiftctrltext
     property string shiftaltctrlmetatext: shiftalttext
     property bool repeatOnHold: true
-    property bool state: false
     property int holdInterval: 100
     property int key: 0
     property string value: null
@@ -37,6 +36,9 @@ Item {
     property bool toggle: false
     width: size * basesize
     height: basesize
+    function state() {
+        return toggle;
+    }
     function getText(){
         if(keyboard.hasShift && keyboard.hasAlt && keyboard.hasCtrl){
             return shiftaltctrltext;
