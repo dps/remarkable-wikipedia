@@ -1,5 +1,0 @@
-name=keyWriter
-desc=The distraction free keyboard notetaker.
-call=/usr/bin/keywriter
-term=killall edit
-imgFile=keyboard

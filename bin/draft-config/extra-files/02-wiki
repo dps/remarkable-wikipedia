@@ -1,5 +1,0 @@
-name=wikipedia
-desc=The free encyclopedia.
-call=/usr/bin/qtwikipedia
-term=killall qtwikipedia
-imgFile=wikipedia
