@@ -1,3 +1,4 @@
+QT += gui
 QT += quick
 QT += dbus
 CONFIG += c++11
