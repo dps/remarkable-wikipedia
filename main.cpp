@@ -10,6 +10,8 @@ Q_IMPORT_PLUGIN(QsgEpaperPlugin)
 
 #include "eventfilter.h"
 
+using namespace std;
+
 int main(int argc, char *argv[])
 {
     //  QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
