@@ -9,7 +9,7 @@
 #define DISPLAYHEIGHT 1872.0
 #define WACOM_X_SCALAR (float(DISPLAYWIDTH) / float(DISPLAYHEIGHT))
 #define WACOM_Y_SCALAR (float(DISPLAYHEIGHT) / float(DISPLAYWIDTH))
-//#define DEBUG_EVENTS
+#define DEBUG_EVENTS
 
 EventFilter::EventFilter(QObject *parent) : QObject(parent), root(nullptr) {}
 
