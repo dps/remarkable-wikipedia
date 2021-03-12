@@ -18,4 +18,8 @@ protected:
   bool eventFilter(QObject* obj, QEvent* ev);
 };
 
+EventFilter::EventFilter(QObject *parent) : QObject(parent), root(nullptr) {
+
+}
+
 #endif // EVENTFILTER_H
