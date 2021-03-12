@@ -11,9 +11,7 @@
 #define WACOM_Y_SCALAR (float(DISPLAYHEIGHT) / float(DISPLAYWIDTH))
 //#define DEBUG_EVENTS
 
-// EventFilter::EventFilter(QObject *parent) : QObject(parent), root(nullptr) {
-
-// }
+EventFilter::EventFilter(QObject *parent) : QObject(parent), root(nullptr) {}
 
 QPointF swap(QPointF pointF){
     return QPointF(pointF.y(), pointF.x());
