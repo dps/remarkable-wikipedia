@@ -12,6 +12,7 @@ class EventFilter : public QObject
 public:
     QQuickItem* root;
     explicit EventFilter(QObject* parent = nullptr);
+    explicit ~EventFilter();
 signals:
     void suspend();
 protected:
