@@ -15,8 +15,6 @@ EventFilter::EventFilter(QObject *parent) : QObject(parent), root(nullptr) {
 
 }
 
-EventFilter::~EventFilter() {}
-
 QPointF swap(QPointF pointF){
     return QPointF(pointF.y(), pointF.x());
 }
