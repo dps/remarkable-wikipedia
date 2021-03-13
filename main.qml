@@ -409,8 +409,5 @@ Window {
         function onChar(ch) {
             vkbd(ch);
         }
-        function onHide() {
-            bdownbox.forceActiveFocus();
-        }
     }
 }
