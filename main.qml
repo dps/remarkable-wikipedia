@@ -299,7 +299,7 @@ Window {
                 }
 
                 TapHandler {
-                    keyboard.visible = true;
+                    onTapped: keyboard.visible = true;
                 }
 
                 onFocusChanged: {
