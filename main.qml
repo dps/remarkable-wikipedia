@@ -298,10 +298,6 @@ Window {
                     handleKey(event);
                 }
 
-                TapHandler {
-                    onTapped: keyboard.visible = true;
-                }
-
                 onFocusChanged: {
                     if (focus) {
                         query.text = "";
@@ -412,6 +408,9 @@ Window {
         visible: false;
         function onChar(ch) {
             vkbd(ch);
+        }
+        function onHide() {
+            log.forceActiveFocus();
         }
     }
 }
