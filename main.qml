@@ -171,6 +171,8 @@ Window {
         } else {
             if (page.startsWith("//")) {
                 url = "http:" + page;
+            } else if (page.startsWith("http")) {
+                url = page;
             } else {
                 url = "https://en.wikipedia.org/api/rest_v1/page/mobile-html/" + encodeURIComponent(page);
             }
