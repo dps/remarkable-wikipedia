@@ -209,13 +209,11 @@ Window {
         anchors.fill: parent
         propagateComposedEvents: true
         onSwipe: {
-            if(direction == "down"){
-                console.log("Scroll up");
+            if(direction == "down") {
                 back();
-            }else if(direction == "up"){
-                console.log("Scroll down");
+            } else if(direction == "up") {
                 page();
-            }else{
+            } else {
                 return;
             }
         }
