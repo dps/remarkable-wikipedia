@@ -169,8 +169,8 @@ Window {
                 url += ".html";
             }
         } else {
-            if (page.startsWith("http")) {
-                url = page;
+            if (page.startsWith("//")) {
+                url = "http:" + page;
             } else {
                 url = "https://en.wikipedia.org/api/rest_v1/page/mobile-html/" + encodeURIComponent(page);
             }
