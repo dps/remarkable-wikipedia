@@ -8,6 +8,9 @@ Q_IMPORT_PLUGIN(QsgEpaperPlugin)
 // end reMarkable additions
 #include <QtDBus>
 
+#include "eventfilter.h"
+
+using namespace std;
 
 int main(int argc, char *argv[])
 {
@@ -22,11 +25,19 @@ int main(int argc, char *argv[])
     // end reMarkable additions
 
     QGuiApplication app(argc, argv);
+    auto filter = new EventFilter(&app);
+    app.setOrganizationName("dps");
+    app.setOrganizationDomain("io.singleton.wikipedia");
+    app.setApplicationName("wikipedia");
+    app.setApplicationDisplayName("wikipedia");
+    app.installEventFilter(filter);
 
     QQmlApplicationEngine engine;
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
     if (engine.rootObjects().isEmpty())
         return -1;
+    QObject* root = engine.rootObjects().first();
+    filter->root = (QQuickItem*)root;
 
     return app.exec();
 }
