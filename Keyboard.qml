@@ -271,15 +271,17 @@ Item {
         // New
         //🥱 🤏 🦾 🦿 🦻 🧏 🧏♂️ 🧏♀️ 🧍 🧍♂️ 🧍♀️ 🧎 🧎♂️ 🧎♀️ 👨🦯 👩🦯 👨🦼 👩🦼 👨🦽 👩🦽 🦧 🦮 🐕🦺 🦥 🦦 🦨 🦩 🧄 🧅 🧇 🧆 🧈 🦪 🧃 🧉 🧊 🛕 🦽 🦼 🛺 🪂 🪐 🤿 🪀 🪁 🦺 🥻 🩱 🩲 🩳 🩰 🪕 🪔 🪓 🦯 🩸 🩹 🩺 🪑 🪒 🤎 🤍 🟠 🟡 🟢 🟣 🟤 🟥 🟧 🟨 🟩 🟦 🟪 🟫
     }
-    KeyboardKey {
-        id: hideKey
-        anchors.bottom: keyboard.bottom
-        anchors.left: keyboard.left
-        text: "⬇️"
-        key: Qt.Key_unknown
-        repeatOnHold: false
-        onClick: keyboard.hide()
-    }
+    // KeyboardKey {
+    //     id: hideKey
+    //     anchors.bottom: keyboard.bottom
+    //     anchors.left: keyboard.left
+    //     text: "⬇️"
+    //     key: Qt.Key_unknown
+    //     repeatOnHold: false
+    //     onClick: {
+    //         keyboard.hide()
+    //     }
+    // }
     // KeyboardKey {
     //     id: switchKey
     //     anchors.bottom: keyboard.bottom
