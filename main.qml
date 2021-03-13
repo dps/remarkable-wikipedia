@@ -169,7 +169,11 @@ Window {
                 url += ".html";
             }
         } else {
-            url = "https://en.wikipedia.org/api/rest_v1/page/mobile-html/" + encodeURIComponent(page);
+            if (page.startsWith("http")) {
+                url = page;
+            } else {
+                url = "https://en.wikipedia.org/api/rest_v1/page/mobile-html/" + encodeURIComponent(page);
+            }
         }
 
 
