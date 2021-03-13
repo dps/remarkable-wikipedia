@@ -298,7 +298,7 @@ Window {
                     handleKey(event);
                 }
 
-                onClick: {
+                onClicked: {
                     keyboard.visible = true;
                 }
 
