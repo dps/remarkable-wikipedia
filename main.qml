@@ -410,7 +410,7 @@ Window {
             vkbd(ch);
         }
         function onHide() {
-            log.forceActiveFocus();
+            bdownbox.forceActiveFocus();
         }
     }
 }
