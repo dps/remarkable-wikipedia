@@ -9,7 +9,7 @@
 #define DISPLAYHEIGHT 1872.0
 #define WACOM_X_SCALAR (float(DISPLAYWIDTH) / float(DISPLAYHEIGHT))
 #define WACOM_Y_SCALAR (float(DISPLAYHEIGHT) / float(DISPLAYWIDTH))
-#define DEBUG_EVENTS
+#define DEBUG_EVENTS 1
 
 EventFilter::EventFilter(QObject *parent) : QObject(parent), root(nullptr) {}
 
@@ -105,6 +105,9 @@ void postEvent(QEvent::Type type, QEvent* ev, QQuickItem* root){
 
 bool EventFilter::eventFilter(QObject* obj, QEvent* ev){
     auto type = ev->type();
+#ifdef DEBUG_EVENTS
+            qDebug() << ev;
+#endif
     bool filtered = QObject::eventFilter(obj, ev);
     if(!filtered){
         if(type == QEvent::TabletPress){
