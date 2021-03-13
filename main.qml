@@ -298,7 +298,7 @@ Window {
                     handleKey(event);
                 }
 
-                onClicked: {
+                TapHandler {
                     keyboard.visible = true;
                 }
 
