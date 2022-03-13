@@ -80,7 +80,8 @@ PRs are welcomed!
 
 ### Developing
 
-FIXME: How do I set up my development toolchain for this app?
+1. Install the Toltec toolchain: https://github.com/toltec-dev/toolchain
+2. How to continue developing? FIXME
 
 ## License
 
