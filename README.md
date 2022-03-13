@@ -52,7 +52,9 @@ Enjoy reading and learning!
 
 <img src="screenshots/suggest.png" width="350px" title="The Search interface suggesting results while the user types a query">
 
-<img src="screenshots/article.png" width="350px" title="An article being displayed">
+<img src="screenshots/article.png" width="350px" title="An article on Apollo 11 being displayed">
+
+<img src="screenshots/article2.png" width="350px" title="An article on Mathematics being displayed">
 
 ## Contributing
 
