@@ -81,7 +81,6 @@ PRs are welcomed!
 ### Developing
 
 1. Install the Toltec toolchain: https://github.com/toltec-dev/toolchain
-2. How to continue developing? FIXME
 
 ## License
 
